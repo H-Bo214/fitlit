@@ -1,6 +1,7 @@
 class UserRepository {
-  constructor(userData) {
+  constructor(userData, hydrationData) {
     this.userData = userData;
+    this.hydrationData = hydrationData;
   }
 
   getUserDataById(id) {
@@ -13,6 +14,8 @@ class UserRepository {
     }, 0)
     return Math.round(totalDailyStepGoal / this.userData.length)
   }
+
+  
 }
 
    
