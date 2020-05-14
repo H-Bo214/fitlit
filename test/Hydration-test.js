@@ -3,11 +3,13 @@ const expect = chai.expect;
 
 const User = require('../src/User')
 const Hydration = require('../src/Hydration')
+const hydrationDataTest = require('../data/hydrationDataTest')
 
 describe('Hydration', function() {
   let user;
   let data;
   let hydration;
+  let user1Data;
 
   beforeEach(() => {
     user = new User({
@@ -22,11 +24,45 @@ describe('Hydration', function() {
         3
       ]
     }),
-    data = [{
+
+    data = hydrationDataTest
+
+    user1Data = [  {
       "userID": 1,
       "date": "2019/09/16",
       "numOunces": 37
-    }],
+    },
+    {
+      "userID": 1,
+      "date": "2019/09/17",
+      "numOunces": 85
+    },
+    {
+      "userID": 1,
+      "date": "2019/09/18",
+      "numOunces": 94
+    },
+    {
+      "userID": 1,
+      "date": "2019/09/19",
+      "numOunces": 75
+    },
+    {
+      "userID": 1,
+      "date": "2019/09/20",
+      "numOunces": 30
+    },
+    {
+      "userID": 1,
+      "date": "2019/09/21",
+      "numOunces": 40
+    },
+    {
+      "userID": 1,
+      "date": "2019/09/22",
+      "numOunces": 62
+    },
+  ]
 
     hydration = new Hydration(data, user)
 
@@ -52,12 +88,12 @@ describe('Hydration', function() {
   });
 
   it('should be able to get the current users hydration data', function() {
-    expect(hydration.returnCurrentUserHydrationData()).to.deep.equal(data)
+
+    expect(hydration.returnCurrentUserHydrationData()).to.deep.equal(user1Data)
   });
 
-
-  // it('should display the users first name', function() {
-  //   expect(user.displayFirstNameOnly()).to.equal('Luisa');
-  // });
+  it('should be able to get the current total Average Daily', function() {
+    expect(hydration.calculateTotalAverageDailyFlOz()).to.deep.equal(60)
+  });
 
 })
