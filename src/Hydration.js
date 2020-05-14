@@ -23,9 +23,11 @@ class Hydration {
       entry.date === date 
     })
     const latestEntry = currentUserHydrationData.indexOf(todaysDate)
-    for (var i = 1; i < 8; i++) {
-      lastSevenDays.push(currentUserHydrationData[latestEntry + 1])
+    for (let i = 0; i < 7; i++) {
+      lastSevenDays.push(currentUserHydrationData[latestEntry + i])
+      console.log('lastSevenDays', lastSevenDays);
     }
+    return lastSevenDays
   }
 }
 
