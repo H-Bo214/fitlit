@@ -8,14 +8,30 @@ class Hydration {
     return this.hydrationData.filter(entry => entry.userID === this.currentUser.id)
   }
   
-  calculateTotalAverageDailyFlOz(id) {
+  calculateTotalAverageDailyFlOz() {
     const currentUserHydrationData = this.returnCurrentUserHydrationData();
     const totalAverageFlOz = currentUserHydrationData.reduce((acc, dailyOzIntake) => {
-     return acc += dailyOzIntake.numOunces
+      return acc += dailyOzIntake.numOunces
     }, 0)
     return Math.round(totalAverageFlOz / currentUserHydrationData.length)
   }
+
+  calculateTotalDailyFlOzPerWeek(date) {
+    const lastSevenDays = []
+    const currentUserHydrationData = this.returnCurrentUserHydrationData();
+    const todaysDate = currentUserHydrationData.find(entry => {
+      entry.date === date 
+    })
+    const latestEntry = currentUserHydrationData.indexOf(todaysDate)
+    for (let i = 0; i < 7; i++) {
+      lastSevenDays.push(currentUserHydrationData[latestEntry + i])
+      console.log('lastSevenDays', lastSevenDays);
+    }
+    return lastSevenDays
+  }
 }
+
+
 
 if (typeof module !== 'undefined') {
   module.exports = Hydration;
