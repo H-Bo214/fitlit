@@ -10,6 +10,7 @@ const displayUserFirstName = document.querySelector('#welcome-message');
 const displayUserStepAverages = document.querySelector('.user-steps');
 const displayTotalUserFlOz = document.querySelector('.hydration-total-FlOz');
 const displayUserFlOzPerWeek = document.querySelector('.hydration-week');
+const displayTodaysFlOz = document.querySelector('.hydration-today');
 
 // Events
 window.onload = 
@@ -17,20 +18,19 @@ createRandomUser(),
 displayUserData(), 
 displayFirstName(), 
 displayTotalUserStepAverages(),
-displayTotalUserFlOzConsumedEver(),
+displayTotalUserFlOzConsumedEver()
 
+// Functions:
 
-
-
-// Functions
-function displayFirstName() {
-  displayUserFirstName.innerHTML = `<h1>Welcome ${user.displayFirstNameOnly()}!</h1>`
-}
-
+// User
 function createRandomUser() {
   let randomUser = Math.floor(Math.random() * userData.length)
   user = new User(userData[randomUser])
   createHydrationData(user)
+}
+
+function displayFirstName() {
+  displayUserFirstName.innerHTML = `<h1>Welcome ${user.displayFirstNameOnly()}!</h1>`
 }
 
 function displayUserData() {
@@ -51,6 +51,7 @@ function displayTotalUserStepAverages() {
   `
 }
 
+// Hydration
 function createHydrationData(user) {
   let hydration = new Hydration(hydrationData, user)
   displayTotalUserFlOzConsumedEver(hydration)
@@ -62,7 +63,10 @@ function displayTotalUserFlOzConsumedEver(hydration) {
 }
 
 function displayTotalUserFlOzPerWeek(hydration) {
-  displayUserFlOzPerWeek.innerHTML = `<p>You have consumed ${hydration.calculateTotalDailyFlOzPerWeek(today)} total Fluid ozs today.</p>`
-
-  // <p>Yesterday's total was ${hydration.calculateTotalDailyFlOzPerWeek[1]}</p>`
+  const thisWeek = hydration.calculateTotalDailyFlOzPerWeek(today)
+  const todaysData = thisWeek.splice(0, 1)
+  displayTodaysFlOz.innerHTML = `Today's intake is: ${todaysData[0].numOunces} Fl Ozs.`
+  thisWeek.forEach(day => {
+    displayUserFlOzPerWeek.innerHTML += `<p>You have consumed ${day.numOunces} total Fluid Ozs on ${day.date}.</p>`
+  })
 }

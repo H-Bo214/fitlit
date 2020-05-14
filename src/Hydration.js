@@ -19,19 +19,15 @@ class Hydration {
   calculateTotalDailyFlOzPerWeek(date) {
     const lastSevenDays = []
     const currentUserHydrationData = this.returnCurrentUserHydrationData();
-    const todaysDate = currentUserHydrationData.find(entry => {
-      entry.date === date 
-    })
-    const latestEntry = currentUserHydrationData.indexOf(todaysDate)
+    const todaysDate = currentUserHydrationData.find(entry => entry.date === date 
+    )
+    const latestEntry = currentUserHydrationData.length - 1
     for (let i = 0; i < 7; i++) {
-      lastSevenDays.push(currentUserHydrationData[latestEntry + i])
-      console.log('lastSevenDays', lastSevenDays);
+      lastSevenDays.push(currentUserHydrationData[latestEntry - i])
     }
     return lastSevenDays
   }
 }
-
-
 
 if (typeof module !== 'undefined') {
   module.exports = Hydration;
