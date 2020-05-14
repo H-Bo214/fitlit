@@ -92,8 +92,20 @@ describe('Hydration', function() {
     expect(hydration.returnCurrentUserHydrationData()).to.deep.equal(user1Data)
   });
 
-  it('should be able to get the current total Average Daily', function() {
+  it('should get the current total Average Daily', function() {
     expect(hydration.calculateTotalAverageDailyFlOz()).to.deep.equal(60)
+  });
+
+  it('should get the current total daily fluid ounces per week', function() {
+    expect(hydration.calculateTotalDailyFlOzPerWeek('2019/09/22')).to.deep.equal([
+      { userID: 1, date: '2019/09/22', numOunces: 62 },
+      { userID: 1, date: '2019/09/21', numOunces: 40 },
+      { userID: 1, date: '2019/09/20', numOunces: 30 },
+      { userID: 1, date: '2019/09/19', numOunces: 75 },
+      { userID: 1, date: '2019/09/18', numOunces: 94 },
+      { userID: 1, date: '2019/09/17', numOunces: 85 },
+      { userID: 1, date: '2019/09/16', numOunces: 37 }
+    ])
   });
 
 })
