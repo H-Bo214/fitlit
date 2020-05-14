@@ -19,9 +19,8 @@ class Hydration {
   calculateTotalDailyFlOzPerWeek(date) {
     const lastSevenDays = []
     const currentUserHydrationData = this.returnCurrentUserHydrationData();
-    const todaysDate = currentUserHydrationData.find(entry => {
-      entry.date === date 
-    })
+    const todaysDate = currentUserHydrationData.find(entry =>
+      entry.date === date)
     const latestEntry = currentUserHydrationData.indexOf(todaysDate)
     for (let i = 0; i < 7; i++) {
       lastSevenDays.push(currentUserHydrationData[latestEntry + i])
