@@ -37,17 +37,17 @@ describe('Hydration', function() {
     expect(hydration).to.be.an.instanceof(Hydration);
   });
 
-  // it('should have a user id', function() {
-  //   expect(user.id).to.equal(user.id);
-  // });
+  it('should have a hydration Data', function() {
+    expect(hydration.hydrationData).to.equal(hydration.hydrationData);
+  });
 
-  // it('should have a user name', function() {
-  //   expect(user.name).to.equal(user.name);
-  // });
+  it('should have a a current user', function() {
+    expect(hydration.currentUser).to.equal(hydration.currentUser);
+  });
 
-  // it('should have a user address', function() {
-  //   expect(user.address).to.equal(user.address);
-  // });
+  it('should have a user address', function() {
+    expect(user.address).to.equal(user.address);
+  });
 
   // it('should have a user email address', function() {
   //   expect(user.email).to.equal(user.email);
