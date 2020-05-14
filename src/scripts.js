@@ -2,6 +2,8 @@
 // Variables
 let user;
 let userRepository = new UserRepository(userData)
+let hydration = new Hydration(hydrationData, user)
+
 // QuerySelectors
 const displayUserInfo = document.querySelector('.display-user-info');
 const displayUserFirstName = document.querySelector('#welcome-message');

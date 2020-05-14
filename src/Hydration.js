@@ -1,9 +1,10 @@
 class Hydration {
   constructor(hydrationData, user) {
-    this.id = hydrationData.id;
-    this.date = hydrationData.date;
-    this.ounces = hydrationData.numOunces;
-    this.userHydration(user)
+    this.hydrationData = hydrationData;
+    this.currentUser = user;
   }
 
+  calculateCurrentUserTotalFlOz(id) {
+    return this.hydrationData.filter(entry => entry.userID === this.currentUser.id)
+  }
 }
