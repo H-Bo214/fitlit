@@ -10,12 +10,8 @@ class Hydration {
   
   calculateTotalAverageDailyFlOz(id) {
     const currentUserHydrationData = this.returnCurrentUserHydrationData();
-    console.log('currentUserHydrationData', currentUserHydrationData[0]);
-    
     const totalAverageFlOz = currentUserHydrationData.reduce((acc, dailyOzIntake) => {
-      acc += dailyOzIntake.numOunces
-      console.log('acc', acc);
-      return acc
+     return acc += dailyOzIntake.numOunces
     }, 0)
     return Math.round(totalAverageFlOz / currentUserHydrationData.length)
   }
