@@ -6,6 +6,7 @@ const Hydration = require('../src/Hydration')
 
 describe('Hydration', function() {
   let user;
+  let data;
   let hydration;
 
   beforeEach(() => {
@@ -20,13 +21,14 @@ describe('Hydration', function() {
         2,
         3
       ]
-    })
-
-    hydration = new Hydration({
+    }),
+    data = [{
       "userID": 1,
       "date": "2019/09/16",
       "numOunces": 37
-    },)
+    }],
+
+    hydration = new Hydration(data, user)
 
   })
   it('should be a function', function() {
@@ -37,6 +39,10 @@ describe('Hydration', function() {
     expect(hydration).to.be.an.instanceof(Hydration);
   });
 
+  it('should be an instance of User', function() {
+    expect(hydration.currentUser).to.deep.equal(user);
+  });
+
   it('should have a hydration Data', function() {
     expect(hydration.hydrationData).to.equal(hydration.hydrationData);
   });
@@ -45,25 +51,10 @@ describe('Hydration', function() {
     expect(hydration.currentUser).to.equal(hydration.currentUser);
   });
 
-  it('should have a user address', function() {
-    expect(user.address).to.equal(user.address);
+  it('should be able to get the current users hydration data', function() {
+    expect(hydration.returnCurrentUserHydrationData()).to.deep.equal(data)
   });
 
-  // it('should have a user email address', function() {
-  //   expect(user.email).to.equal(user.email);
-  // });
-
-  // it('should have a user stride length', function() {
-  //   expect(user.strideLength).to.equal(user.strideLength);
-  // });
-
-  // it('should have a user daily step goal', function() {
-  //   expect(user.dailyStepGoal).to.equal(user.dailyStepGoal);
-  // });
-
-  // it('should have a user list of friends', function() {
-  //   expect(user.friends).to.equal(user.friends);
-  // });
 
   // it('should display the users first name', function() {
   //   expect(user.displayFirstNameOnly()).to.equal('Luisa');
