@@ -3,7 +3,6 @@ const expect = chai.expect;
 
 const User = require('../src/User')
 const Hydration = require('../src/Hydration')
-// const userDataTest = require('../data/userDataTest')
 
 describe('Hydration', function() {
   let user;
