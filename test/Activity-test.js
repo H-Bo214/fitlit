@@ -98,14 +98,13 @@ describe('Hydration', function() {
     expect(activity.activityData).to.equal(activity.activityData);
   });
 
-  // it('should have a a current user', function() {
-  //   expect(hydration.currentUser).to.equal(hydration.currentUser);
-  // });
+  it.only('should have a a current user', function() {
+    expect(activity.currentUser).to.equal(activity.currentUser);
+  });
 
-  // it('should be able to get the current users hydration data', function() {
-
-  //   expect(hydration.returnCurrentUserHydrationData()).to.deep.equal(user1Data)
-  // });
+  it.only('should be able to get the current users activity data', function() {
+    expect(activity.returnCurrentUserActivityData()).to.deep.equal(user1Data)
+  });
 
   // it('should get the current total Average Daily', function() {
   //   expect(hydration.calculateTotalAverageDailyFlOz()).to.deep.equal(60)
