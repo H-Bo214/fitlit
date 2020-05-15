@@ -12,6 +12,8 @@ const displayTotalUserFlOz = document.querySelector('.hydration-total-FlOz');
 const displayUserFlOzPerWeek = document.querySelector('.hydration-week');
 const displayTodaysFlOz = document.querySelector('.hydration-today');
 const displayUserSleepHoursAverage = document.querySelector('.sleep-all-time');
+const displayUserSleepHoursPerWeek = document.querySelector('.sleep-week');
+const displayUserSleepHoursToday = document.querySelector('.sleep-today')
 
 // Events
 window.onload = 
@@ -76,9 +78,18 @@ function displayTotalUserFlOzPerWeek(hydration) {
 function createSleepData(user) {
   let sleep = new Sleep(sleepData, user)
   displayTotalUserAverageSleepHoursEver(sleep)
-  // displayTotalUserFlOzPerWeek(hydration)
+  displayTotalUserSleepHoursPerWeek(sleep)
 }
 
 function displayTotalUserAverageSleepHoursEver(sleep) {
-  displayUserSleepHoursAverage.innerHTML = `<p>You have sleep an average of ${sleep.calculateUserTotalAverageSleepHours(user.id)} hours!</p>`
+  displayUserSleepHoursAverage.innerHTML = `<p>You have sleep an average of ${sleep.calculateUserTotalAverageSleepHours(user.id)} hours!</p>` 
+}
+
+function displayTotalUserSleepHoursPerWeek(sleep) {
+  const thisWeek = sleep.calculateTotalDailyHoursSleptPerWeek(today)
+  const todaysData = thisWeek.splice(0, 1)
+  displayUserSleepHoursToday.innerHTML = `Today's Total Sleep Hours are: ${todaysData[0].hoursSlept}.`
+  thisWeek.forEach(day => {
+    displayUserSleepHoursPerWeek.innerHTML += `<p>You slept ${day.hoursSlept} hrs on ${day.date}.</p>`
+  })
 }
