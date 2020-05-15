@@ -103,12 +103,12 @@ describe('Hydration', function() {
   });
 
   it.only('should be able to get the current users activity data', function() {
-    expect(activity.returnCurrentUserActivityData()).to.deep.equal(user1Data)
+    expect(activity.returnCurrentUserActivityData()).to.deep.equal(user1Data) 
   });
 
-  // it('should get the current total Average Daily', function() {
-  //   expect(hydration.calculateTotalAverageDailyFlOz()).to.deep.equal(60)
-  // });
+  it.only('should get the active minutes for today', function() {
+    expect(activity.activeMinutesForToday("2019/09/22")).to.equal(106)
+  });
 
   // it('should get the current total daily fluid ounces per week', function() {
   //   expect(hydration.calculateTotalDailyFlOzPerWeek('2019/09/22')).to.deep.equal([

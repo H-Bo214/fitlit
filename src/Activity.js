@@ -8,7 +8,11 @@ class Activity {
    return this.activityData.filter(entry => entry.userID === this.currentUser.id)
   
   }
-  
+  activeMinutesForToday(date) {
+      const currentUserActivityData = this.returnCurrentUserActivityData();
+      let activeMinutes = currentUserActivityData.find(today => today.date === date) 
+        return activeMinutes.minutesActive
+    }
 }
 
 
