@@ -30,39 +30,54 @@ describe('Hydration', function() {
     user1Data = [  {
       "userID": 1,
       "date": "2019/09/16",
-      "numOunces": 37
+      "numSteps": 3577,
+      "minutesActive": 140,
+      "flightsOfStairs": 16
     },
     {
       "userID": 1,
       "date": "2019/09/17",
-      "numOunces": 85
+      "numSteps": 3577,
+      "minutesActive": 140,
+      "flightsOfStairs": 16
     },
     {
       "userID": 1,
       "date": "2019/09/18",
-      "numOunces": 94
-    },
-    {
+      "numSteps": 3577,
+      "minutesActive": 140,
+      "flightsOfStairs": 16
+     },
+     {
       "userID": 1,
       "date": "2019/09/19",
-      "numOunces": 75
-    },
-    {
+      "numSteps": 3577,
+      "minutesActive": 140,
+      "flightsOfStairs": 16
+     },
+     {
       "userID": 1,
       "date": "2019/09/20",
-      "numOunces": 30
+      "numSteps": 3486,
+      "minutesActive": 114,
+      "flightsOfStairs": 32
     },
     {
       "userID": 1,
       "date": "2019/09/21",
-      "numOunces": 40
+      "numSteps": 2634,
+      "minutesActive": 107,
+      "flightsOfStairs": 5
     },
     {
       "userID": 1,
       "date": "2019/09/22",
-      "numOunces": 62
+      "numSteps": 8015,
+      "minutesActive": 106,
+      "flightsOfStairs": 37
     },
   ]
+
 
     activity = new Activity(data, user)
     
@@ -71,17 +86,17 @@ describe('Hydration', function() {
     expect(Activity).to.be.a('function');
   });
 
-  it.only('should be an instance of Hydration', function() {
+  it.only('should be an instance of Activity', function() {
     expect(activity).to.be.an.instanceof(Activity);
   });
 
-  // it('should be an instance of User', function() {
-  //   expect(hydration.currentUser).to.deep.equal(user);
-  // });
+  it.only('should be an instance of User', function() {
+    expect(activity.currentUser).to.deep.equal(user);
+  });
 
-  // it('should have a hydration Data', function() {
-  //   expect(hydration.hydrationData).to.equal(hydration.hydrationData);
-  // });
+  it.only('should have a activity data', function() {
+    expect(activity.activityData).to.equal(activity.activityData);
+  });
 
   // it('should have a a current user', function() {
   //   expect(hydration.currentUser).to.equal(hydration.currentUser);

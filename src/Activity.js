@@ -3,6 +3,12 @@ class Activity {
     this.activityData = activityData;
     this.currentUser = user;
   }
+
+  returnCurrentUserActivityData() {
+   return this.activityData.filter(entry => entry.userID === this.currentUser.id)
+  
+  }
+  
 }
 
 
