@@ -11,14 +11,14 @@ const displayUserStepAverages = document.querySelector('.user-steps');
 const displayTotalUserFlOz = document.querySelector('.hydration-total-FlOz');
 const displayUserFlOzPerWeek = document.querySelector('.hydration-week');
 const displayTodaysFlOz = document.querySelector('.hydration-today');
+const displayUserSleepHoursAverage = document.querySelector('.sleep-all-time');
 
 // Events
 window.onload = 
 createRandomUser(), 
 displayUserData(), 
 displayFirstName(), 
-displayTotalUserStepAverages(),
-displayTotalUserFlOzConsumedEver()
+displayTotalUserStepAverages()
 
 // Functions:
 
@@ -27,6 +27,7 @@ function createRandomUser() {
   let randomUser = Math.floor(Math.random() * userData.length)
   user = new User(userData[randomUser])
   createHydrationData(user)
+  createSleepData(user)
 }
 
 function displayFirstName() {
@@ -69,4 +70,15 @@ function displayTotalUserFlOzPerWeek(hydration) {
   thisWeek.forEach(day => {
     displayUserFlOzPerWeek.innerHTML += `<p>You have consumed ${day.numOunces} total Fluid Ozs on ${day.date}.</p>`
   })
+}
+
+// Sleep
+function createSleepData(user) {
+  let sleep = new Sleep(sleepData, user)
+  displayTotalUserAverageSleepHoursEver(sleep)
+  // displayTotalUserFlOzPerWeek(hydration)
+}
+
+function displayTotalUserAverageSleepHoursEver(sleep) {
+  displayUserSleepHoursAverage.innerHTML = `<p>You have sleep an average of ${sleep.calculateUserTotalAverageSleepHours(user.id)} hours!</p>`
 }
