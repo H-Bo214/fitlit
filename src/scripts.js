@@ -1,7 +1,7 @@
 
 // Variables
 let user;
-let userRepository = new UserRepository(userData);
+let userRepository = new UserRepository(userData, hydrationData, sleepData);
 let today = '2019/09/22';
 
 // QuerySelectors
@@ -20,7 +20,8 @@ window.onload =
 createRandomUser(), 
 displayUserData(), 
 displayFirstName(), 
-displayTotalUserStepAverages()
+displayTotalUserStepAverages(),
+userRepository.calculateTotalSleepQualityWeekWith3AwesomeDays(today)
 
 // Functions:
 
@@ -78,15 +79,15 @@ function displayTotalUserFlOzPerWeek(hydration) {
 function createSleepData(user) {
   let sleep = new Sleep(sleepData, user)
   displayTotalUserAverageSleepHoursEver(sleep)
-  displayTotalUserSleepHoursPerWeek(sleep)
+  displayTotalSleepDataPerWeek(sleep)
 }
 
 function displayTotalUserAverageSleepHoursEver(sleep) {
   displayUserSleepHoursAverage.innerHTML = `<p>You have sleep an average of ${sleep.calculateUserTotalAverageSleepHours(user.id)} hours!</p>` 
 }
 
-function displayTotalUserSleepHoursPerWeek(sleep) {
-  const thisWeek = sleep.calculateTotalDailyHoursSleptPerWeek(today)
+function displayTotalSleepDataPerWeek(sleep) {
+  const thisWeek = sleep.calculateTotalSleepDataPerWeek(today)
   const todaysData = thisWeek.splice(0, 1)
   displayUserSleepHoursToday.innerHTML = `Today's Total Sleep Hours are: ${todaysData[0].hoursSlept}.`
   thisWeek.forEach(day => {

@@ -16,7 +16,8 @@ class Sleep {
     let hours = Math.floor(totalAverageSleep / currentUserSleepData.length)
     return hours
   }
-  calculateTotalDailyHoursSleptPerWeek(date) {
+  
+  calculateTotalSleepDataPerWeek(date) {
     const lastSevenDays = []
     const currentUserSleepData = this.returnCurrentUserSleepData();
     const selectedDate = currentUserSleepData.find(entry => entry.date === date 
@@ -31,7 +32,6 @@ class Sleep {
 
 
   // Methods that aren't actually called
-
 
 }
 
