@@ -13,9 +13,15 @@ class Sleep {
     const totalAverageSleep = currentUserSleepData.reduce((acc, dailySleep) => {
       return acc += dailySleep.hoursSlept
     }, 0)
-    console.log('totalAverageSleep', totalAverageSleep)
-    return (Math.round(totalAverageSleep / totalAverageSleep.length)).toFixed(0)
+    let hours = Math.floor(totalAverageSleep / currentUserSleepData.length)
+    return hours
   }
+
+
+
+  // Methods that aren't actually called
+
+
 }
 
 if (typeof module !== 'undefined') {
