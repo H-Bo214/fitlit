@@ -3,6 +3,7 @@ Please include a summary of the change:
 
 
 Commit Emojis:
+
 :tada: Initial commit
 :construction: HTML modifications/updates.
 :art: CSS modifications/updates.
