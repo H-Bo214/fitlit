@@ -61,7 +61,7 @@ describe('Hydration', function() {
       "userID": 1,
       "date": "2019/09/22",
       "numOunces": 62
-    },
+    }
   ]
 
     hydration = new Hydration(data, user)
