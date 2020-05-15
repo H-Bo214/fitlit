@@ -1,4 +1,4 @@
-crystal# PR Description
+# PR Description
 Please include a summary of the change:
 
 
@@ -13,9 +13,7 @@ Commit Emojis:
 :bento: Adding new assets or images
 :beetle: If it is a bug or issue fix, describe the issue that was fixed.
 
-
 If it is a new feature, describe the feature and the iteration of the project spec it addresses.
-
 
 Note any questions or struggles as well.
 
