@@ -1,7 +1,7 @@
 class UserRepository {
-  constructor(userData, hydrationData) {
+  constructor(userData, sleepData) {
     this.userData = userData;
-    this.hydrationData = hydrationData;
+    this.sleepData = sleepData;
   }
 
   getUserDataById(id) {
@@ -16,6 +16,41 @@ class UserRepository {
   }
 
   
+  // Required rubric methods that aren't called
+  filterSleepDataByIDs() {
+    return this.sleepData.reduce((acc, id) => {
+      !acc.includes(id.userID) && acc.push(id.userID);
+      return acc;
+    }, []);
+  }
+  
+  calculateTotalSleepQualityWeekWith3AwesomeDays(date) {
+    const sortedWeeks = []
+    this.filterSleepDataByIDs().forEach(id => {
+      let userLogs = this.sleepData.filter(log => log.userID === id);
+      sortedWeeks.push(userLogs)
+    })
+    
+    let allUserWeeklyData = sortedWeeks.reduce((acc, user) => {
+      let i = user.findIndex(log => log.date === date);
+      acc.push(user.slice(i - 6, i + 1));
+      return acc
+    }, [])
+
+    let allUserAverages = allUserWeeklyData.reduce((acc, user) => {
+      let avgQual = user.reduce((acc, day) => {
+        acc += day.sleepQuality;
+        return acc;
+      }, 0);
+      acc.push(
+        {
+          id: acc.length + 1,
+          avgQual: parseFloat((avgQual / 7).toFixed(1))
+        });
+      return acc;
+    }, []);
+    return allUserAverages.filter(user => user.avgQual > 3);
+  }
 }
 
    
