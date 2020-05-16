@@ -5,7 +5,7 @@ const User = require('../src/User')
 const Activity = require('../src/Activity')
 const activityDataTest = require('../data/activityDataTest')
 
-describe('Hydration', function() {
+describe('Activity', function() {
   let user;
   let data;
   let activity;
@@ -82,31 +82,31 @@ describe('Hydration', function() {
     activity = new Activity(data, user)
     
   })
-  it.only('should be a function', function() {
+  it('should be a function', function() {
     expect(Activity).to.be.a('function');
   });
 
-  it.only('should be an instance of Activity', function() {
+  it('should be an instance of Activity', function() {
     expect(activity).to.be.an.instanceof(Activity);
   });
 
-  it.only('should be an instance of User', function() {
+  it('should be an instance of User', function() {
     expect(activity.currentUser).to.deep.equal(user);
   });
 
-  it.only('should have a activity data', function() {
+  it('should have a activity data', function() {
     expect(activity.activityData).to.equal(activity.activityData);
   });
 
-  it.only('should have a a current user', function() {
+  it('should have a a current user', function() {
     expect(activity.currentUser).to.equal(activity.currentUser);
   });
 
-  it.only('should be able to get the current users activity data', function() {
+  it('should be able to get the current users activity data', function() {
     expect(activity.returnCurrentUserActivityData()).to.deep.equal(user1Data) 
   });
 
-  it.only('should get the active minutes for today', function() {
+  it('should get the active minutes for today', function() {
     expect(activity.activeMinutesForToday("2019/09/22")).to.equal(106)
   });
 

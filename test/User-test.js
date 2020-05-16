@@ -21,43 +21,43 @@ describe('User', function() {
       ]
     })
   })
-  it.skip('should be a function', function() {
+  it('should be a function', function() {
     expect(User).to.be.a('function');
   });
 
-  it.skip('should be an instance of user', function() {
+  it('should be an instance of user', function() {
     expect(user).to.be.an.instanceof(User);
   });
 
-  it.skip('should have a user id', function() {
+  it('should have a user id', function() {
     expect(user.id).to.equal(user.id);
   });
 
-  it.skip('should have a user name', function() {
+  it('should have a user name', function() {
     expect(user.name).to.equal(user.name);
   });
 
-  it.skip('should have a user address', function() {
+  it('should have a user address', function() {
     expect(user.address).to.equal(user.address);
   });
 
-  it.skip('should have a user email address', function() {
+  it('should have a user email address', function() {
     expect(user.email).to.equal(user.email);
   });
 
-  it.skip('should have a user stride length', function() {
+  it('should have a user stride length', function() {
     expect(user.strideLength).to.equal(user.strideLength);
   });
 
-  it.skip('should have a user daily step goal', function() {
+  it('should have a user daily step goal', function() {
     expect(user.dailyStepGoal).to.equal(user.dailyStepGoal);
   });
 
-  it.skip('should have a user list of friends', function() {
+  it('should have a user list of friends', function() {
     expect(user.friends).to.equal(user.friends);
   });
 
-  it.skip('should display the users first name', function() {
+  it('should display the users first name', function() {
     expect(user.displayFirstNameOnly()).to.equal('Luisa');
   });
 
