@@ -90,8 +90,9 @@ function displayTotalUserAverageSleepHoursEver(sleep) {
 function displayTotalSleepDataPerWeek(sleep) {
   const thisWeek = sleep.calculateTotalSleepDataPerWeek(today)
   const todaysData = thisWeek.splice(0, 1)
-  displayUserSleepHoursToday.innerHTML = `Today's Total Sleep Hours are: ${todaysData[0].hoursSlept}.`
+  displayUserSleepHoursToday.innerHTML = `<p>Today's Total Sleep Hours are: ${todaysData[0].hoursSlept}</p>
+  <p>Today's Sleep Quality is: ${todaysData[0].sleepQuality}.</p>`
   thisWeek.forEach(day => {
-    displayUserSleepHoursPerWeek.innerHTML += `<p>You slept ${day.hoursSlept} hrs on ${day.date}.</p>`
+    displayUserSleepHoursPerWeek.innerHTML += `<p>You slept ${day.hoursSlept} hrs  with a sleep quality of ${day.sleepQuality}on ${day.date}.</p>`
   })
 }
