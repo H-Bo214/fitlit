@@ -24,6 +24,7 @@ displayFirstName(),
 displayTotalUserStepAverages();
 
 
+
 // Functions:
 
 // User
@@ -104,6 +105,9 @@ function displayTotalSleepDataPerWeek(sleep) {
 function createActvityData(user) {
   let activity = new Activity(activityData, user)
   displayActiveMinutesForToday(activity)
+  // testing calculateUserMiles(), remove at the end and remove comma above
+activity.calculateUserMiles() 
+activity.totalNumberOfSteps()
 }
 
 
