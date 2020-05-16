@@ -29,8 +29,7 @@ class Sleep {
   calculateTotalSleepDataPerWeek(date) {
     const lastSevenDays = []
     const currentUserSleepData = this.returnCurrentUserSleepData();
-    const selectedDate = currentUserSleepData.find(entry => entry.date === date 
-    )
+    const selectedDate = currentUserSleepData.find(entry => entry.date === date)
     const latestEntry = currentUserSleepData.indexOf(selectedDate)
     for (let i = 0; i < 7; i++) {
       lastSevenDays.push(currentUserSleepData[latestEntry - i])
