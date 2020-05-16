@@ -20,9 +20,17 @@ class Activity {
     return currentUserActivityData.reduce((acc, step) => acc += step.numSteps,0)
   }
 
-  calculateUserMiles() {
+  calculateUserTotalMiles() {
     const stepsPerMile = Math.round(5280 / user.strideLength)
     const result = Math.round(this.totalNumberOfSteps() / stepsPerMile)
+    return result
+  }
+
+  calculateUserDailyMiles (date) {
+    const currentUserActivityData = this.returnCurrentUserActivityData()
+    const activeSteps = currentUserActivityData.find(today => today.date === date) 
+    const stepsPerMile = Math.round(5280 / user.strideLength)
+    const result = Math.round(activeSteps.numSteps / stepsPerMile)
     return result
   }
 }

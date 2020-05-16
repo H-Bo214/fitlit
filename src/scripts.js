@@ -107,7 +107,8 @@ function createActivityData(user) {
   let activity = new Activity(activityData, user)
   displayActiveMinutesForToday(activity)
   displayTotalMiles(activity)
-  // testing calculateUserMiles(), remove at the end and remove comma above
+  // testing calculateUserDailyMiles (date), remove at the end and remove comma above
+  activity.calculateUserDailyMiles (today)
 }
 
 
@@ -117,5 +118,5 @@ function displayActiveMinutesForToday(activity) {
 
 //Our own metric
 function displayTotalMiles(activity) {
-  displayUserMilesForToday.innerHTML = `<p>You have walked ${activity.calculateUserMiles()} miles total.</p>`
+  displayUserMilesForToday.innerHTML = `<p>You have walked ${activity.calculateUserDailyMiles (today)} miles today, and a total of ${activity.calculateUserTotalMiles()} miles.</p>`
 }
