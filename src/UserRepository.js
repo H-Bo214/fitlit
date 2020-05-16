@@ -1,7 +1,6 @@
 class UserRepository {
-  constructor(userData, hydrationData, sleepData) {
+  constructor(userData, sleepData) {
     this.userData = userData;
-    this.hydrationData = hydrationData;
     this.sleepData = sleepData;
   }
 
@@ -16,28 +15,42 @@ class UserRepository {
     return Math.round(totalDailyStepGoal / this.userData.length)
   }
 
-  // Methods that aren't called
-  calculateTotalSleepQualityWeekWith3AwesomeDays(date) {
-    const lastSevenDays = []
-    // const currentUserData = this.getUserDataById(id);
-    const selectedDate = this.sleepData.filter(entry => entry.date === date 
-    )
-    const datesArray = this.sleepData.map(date => date.date)
-    const endDate = datesArray.lastIndexOf(date)
-    const weekData = this.sleepData.slice(endDate - 349, endDate + 1)
-    console.log('weekData', weekData)
-    // const selectedData = this.sleepData.indexOf(selectedDate.date)
-    // average the individual user quality, and for those over 3, return those users
-    // filter on id, 
-    // math to calculate average over those 7 days
-    // filter on average > 3
-    for (let i = 0; i < 7; i++) {
-      lastSevenDays.push(currentUserData[latestEntry - i])
-    }
-    return lastSevenDays
-  }
-  // have an array, and getting out a weeks worth of data given a single date
   
+  // Required rubric methods that aren't called
+  filterSleepDataByIDs() {
+    return this.sleepData.reduce((acc, id) => {
+      !acc.includes(id.userID) && acc.push(id.userID);
+      return acc;
+    }, []);
+  }
+  
+  calculateTotalSleepQualityWeekWith3AwesomeDays(date) {
+    const sortedWeeks = []
+    this.filterSleepDataByIDs().forEach(id => {
+      let userLogs = this.sleepData.filter(log => log.userID === id);
+      sortedWeeks.push(userLogs)
+    })
+    
+    let allUserWeeklyData = sortedWeeks.reduce((acc, user) => {
+      let i = user.findIndex(log => log.date === date);
+      acc.push(user.slice(i - 6, i + 1));
+      return acc
+    }, [])
+
+    let allUserAverages = allUserWeeklyData.reduce((acc, user) => {
+      let avgQual = user.reduce((acc, day) => {
+        acc += day.sleepQuality;
+        return acc;
+      }, 0);
+      acc.push(
+        {
+          id: acc.length + 1,
+          avgQual: parseFloat((avgQual / 7).toFixed(1))
+        });
+      return acc;
+    }, []);
+    return allUserAverages.filter(user => user.avgQual > 3);
+  }
 }
 
    
