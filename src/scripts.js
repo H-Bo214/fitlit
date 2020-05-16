@@ -15,6 +15,7 @@ const displayUserSleepHoursAverage = document.querySelector('.sleep-all-time');
 const displayUserSleepHoursPerWeek = document.querySelector('.sleep-week');
 const displayUserSleepHoursToday = document.querySelector('.sleep-today')
 const displayUserActiveMinutesForToday = document.querySelector('.active-minutes-today')
+const displayUserMilesForToday = document.querySelector('.mile-distance-today')
 
 // Events
 window.onload = 
@@ -22,6 +23,7 @@ createRandomUser(),
 displayUserData(), 
 displayFirstName(), 
 displayTotalUserStepAverages();
+
 
 
 // Functions:
@@ -32,7 +34,7 @@ function createRandomUser() {
   user = new User(userData[randomUser])
   createHydrationData(user)
   createSleepData(user)
-  createActvityData(user)
+  createActivityData(user)
 }
 
 function displayFirstName() {
@@ -101,12 +103,20 @@ function displayTotalSleepDataPerWeek(sleep) {
 
 //Activity
 
-function createActvityData(user) {
+function createActivityData(user) {
   let activity = new Activity(activityData, user)
   displayActiveMinutesForToday(activity)
+  displayTotalMiles(activity)
+  // testing calculateUserDailyMiles (date), remove at the end and remove comma above
+  activity.calculateUserDailyMiles (today)
 }
 
 
 function displayActiveMinutesForToday(activity) {
   displayUserActiveMinutesForToday.innerHTML = `<p>You were active ${activity.activeMinutesForToday(today)} minutes today.</p>`
+}
+
+//Our own metric
+function displayTotalMiles(activity) {
+  displayUserMilesForToday.innerHTML = `<p>You have walked ${activity.calculateUserDailyMiles (today)} miles today, and a total of ${activity.calculateUserTotalMiles()} miles.</p>`
 }
