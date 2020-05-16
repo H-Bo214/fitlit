@@ -83,7 +83,8 @@ function createSleepData(user) {
 }
 
 function displayTotalUserAverageSleepHoursEver(sleep) {
-  displayUserSleepHoursAverage.innerHTML = `<p>You have sleep an average of ${sleep.calculateUserTotalAverageSleepHours(user.id)} hours!</p>` 
+  displayUserSleepHoursAverage.innerHTML = `<p>You have sleep an average of ${sleep.calculateUserTotalAverageSleepHours(user.id)} hours!</p>
+  <p>Your sleep quality is an average of ${sleep.calculateUserTotalAverageSleepQuality(user.id)} </p>` 
 }
 
 function displayTotalSleepDataPerWeek(sleep) {

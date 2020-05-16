@@ -16,6 +16,15 @@ class Sleep {
     let hours = Math.floor(totalAverageSleep / currentUserSleepData.length)
     return hours
   }
+
+  calculateUserTotalAverageSleepQuality() {
+    const currentUserSleepData = this.returnCurrentUserSleepData();
+    const totalAverageSleep = currentUserSleepData.reduce((acc, dailySleep) => {
+      return acc += dailySleep.sleepQuality
+    }, 0)
+    let hours = Math.floor(totalAverageSleep / currentUserSleepData.length)
+    return hours
+  }
   
   calculateTotalSleepDataPerWeek(date) {
     const lastSevenDays = []
