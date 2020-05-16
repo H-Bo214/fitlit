@@ -20,8 +20,8 @@ window.onload =
 createRandomUser(), 
 displayUserData(), 
 displayFirstName(), 
-displayTotalUserStepAverages(),
-userRepository.calculateTotalSleepQualityWeekWith3AwesomeDays(today)
+displayTotalUserStepAverages();
+
 
 // Functions:
 
@@ -87,6 +87,25 @@ function displayTotalUserAverageSleepHoursEver(sleep) {
   <p>Your sleep quality is an average of ${sleep.calculateUserTotalAverageSleepQuality(user.id)} </p>` 
 }
 
+function displayTotalSleepDataPerWeek(sleep) {
+  const thisWeek = sleep.calculateTotalSleepDataPerWeek(today)
+  const todaysData = thisWeek.splice(0, 1)
+  displayUserSleepHoursToday.innerHTML = `<p>Today's Total Sleep Hours are: ${todaysData[0].hoursSlept}</p>
+  <p>Today's Sleep Quality is: ${todaysData[0].sleepQuality}.</p>`
+  thisWeek.forEach(day => {
+    displayUserSleepHoursPerWeek.innerHTML += `<p>You slept ${day.hoursSlept} hrs  with a sleep quality of ${day.sleepQuality}on ${day.date}.</p>`
+  })
+}
+
+function createSleepData(user) {
+  let sleep = new Sleep(sleepData, user)
+  displayTotalUserAverageSleepHoursEver(sleep)
+  displayTotalSleepDataPerWeek(sleep)
+}
+function displayTotalUserAverageSleepHoursEver(sleep) {
+  displayUserSleepHoursAverage.innerHTML = `<p>You have sleep an average of ${sleep.calculateUserTotalAverageSleepHours(user.id)} hours!</p>
+  <p>Your sleep quality is an average of ${sleep.calculateUserTotalAverageSleepQuality(user.id)} </p>`
+}
 function displayTotalSleepDataPerWeek(sleep) {
   const thisWeek = sleep.calculateTotalSleepDataPerWeek(today)
   const todaysData = thisWeek.splice(0, 1)
