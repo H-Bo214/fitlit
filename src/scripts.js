@@ -1,7 +1,7 @@
 
 // Variables
 let user;
-let userRepository = new UserRepository(userData, hydrationData, sleepData);
+let userRepository = new UserRepository(userData, hydrationData, sleepData, activityData);
 let today = '2019/09/22';
 
 // QuerySelectors
@@ -14,6 +14,7 @@ const displayTodaysFlOz = document.querySelector('.hydration-today');
 const displayUserSleepHoursAverage = document.querySelector('.sleep-all-time');
 const displayUserSleepHoursPerWeek = document.querySelector('.sleep-week');
 const displayUserSleepHoursToday = document.querySelector('.sleep-today')
+const displayUserActiveMinutesForToday = document.querySelector('.active-minutes-today')
 
 // Events
 window.onload = 
@@ -31,6 +32,7 @@ function createRandomUser() {
   user = new User(userData[randomUser])
   createHydrationData(user)
   createSleepData(user)
+  createActvityData(user)
 }
 
 function displayFirstName() {
@@ -97,21 +99,14 @@ function displayTotalSleepDataPerWeek(sleep) {
   })
 }
 
-function createSleepData(user) {
-  let sleep = new Sleep(sleepData, user)
-  displayTotalUserAverageSleepHoursEver(sleep)
-  displayTotalSleepDataPerWeek(sleep)
+//Activity
+
+function createActvityData(user) {
+  let activity = new Activity(activityData, user)
+  displayActiveMinutesForToday(activity)
 }
-function displayTotalUserAverageSleepHoursEver(sleep) {
-  displayUserSleepHoursAverage.innerHTML = `<p>You have sleep an average of ${sleep.calculateUserTotalAverageSleepHours(user.id)} hours!</p>
-  <p>Your sleep quality is an average of ${sleep.calculateUserTotalAverageSleepQuality(user.id)} </p>`
-}
-function displayTotalSleepDataPerWeek(sleep) {
-  const thisWeek = sleep.calculateTotalSleepDataPerWeek(today)
-  const todaysData = thisWeek.splice(0, 1)
-  displayUserSleepHoursToday.innerHTML = `<p>Today's Total Sleep Hours are: ${todaysData[0].hoursSlept}</p>
-  <p>Today's Sleep Quality is: ${todaysData[0].sleepQuality}.</p>`
-  thisWeek.forEach(day => {
-    displayUserSleepHoursPerWeek.innerHTML += `<p>You slept ${day.hoursSlept} hrs  with a sleep quality of ${day.sleepQuality}on ${day.date}.</p>`
-  })
+
+
+function displayActiveMinutesForToday(activity) {
+  displayUserActiveMinutesForToday.innerHTML = `<p>You were active ${activity.activeMinutesForToday(today)} minutes today.</p>`
 }
