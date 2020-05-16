@@ -85,25 +85,27 @@ describe('Sleep', function() {
     expect(Sleep).to.be.a('function');
     });
   
-    it('should be an instance of Sleep', function() {
-      expect(sleep).to.be.an.instanceof(Sleep);
-    });
-  
-    it('should be an instance of User', function() {
-      expect(sleep.currentUser).to.deep.equal(user);
-    });
-  
-    it('should have a hydration Data', function() {
-      expect(sleep.sleepData).to.equal(sleep.sleepData);
-    });
-  
-    it('should have a a current user', function() {
-      expect(sleep.currentUser).to.equal(sleep.currentUser);
-    });
-  
-    it('should be able to get the current users hydration data', function() {
-      expect(sleep.returnCurrentUserSleepData()).to.deep.equal(user1Data)
-    });
- 
+  it('should be an instance of Sleep', function() {
+    expect(sleep).to.be.an.instanceof(Sleep);
+  });
 
+  it('should be an instance of User', function() {
+    expect(sleep.currentUser).to.deep.equal(user);
+  });
+
+  it('should have a hydration Data', function() {
+    expect(sleep.sleepData).to.equal(sleep.sleepData);
+  });
+
+  it('should have a a current user', function() {
+    expect(sleep.currentUser).to.equal(sleep.currentUser);
+  });
+
+  it('should be able to get the current users sleep data', function() {
+    expect(sleep.returnCurrentUserSleepData()).to.deep.equal(user1Data)
+  });
+
+  it('should be able to get the current users sleep data per week', function() {
+    expect(sleep.calculateTotalSleepDataPerWeek(2019/09/22)).to.deep.equal()
+  });
 })
