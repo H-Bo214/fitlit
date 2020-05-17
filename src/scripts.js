@@ -16,6 +16,7 @@ const displayUserSleepHoursPerWeek = document.querySelector('.sleep-week');
 const displayUserSleepHoursToday = document.querySelector('.sleep-today')
 const displayUserActiveMinutesForToday = document.querySelector('.active-minutes-today')
 const displayUserMilesForToday = document.querySelector('.mile-distance-today')
+const displayUserActiveMinutesWeekly = document.querySelector('.active-minutes-weekly')
 
 // Events
 window.onload = 
@@ -107,10 +108,18 @@ function createActivityData(user) {
   let activity = new Activity(activityData, user)
   displayActiveMinutesForToday(activity)
   displayTotalMiles(activity)
+  displayWeeklyActivityData(activity)
   // testing calculateUserDailyMiles (date), remove at the end and remove comma above
-  activity.calculateUserDailyMiles (today)
+  
 }
 
+function displayWeeklyActivityData(activity) {
+  const thisWeek = activity.calculateTotalActivityDataPerWeek(today)
+  const todaysData = thisWeek.splice(0, 1)
+  thisWeek.forEach(day => {
+    displayUserActiveMinutesWeekly.innerHTML += `<p>On ${day.date} you were active ${day.minutesActive}, walked ${day.numSteps} steps & climbed ${day.flightsOfStairs} flights of stairs.</p>`
+  })
+}
 
 function displayActiveMinutesForToday(activity) {
   displayUserActiveMinutesForToday.innerHTML = `<p>You were active ${activity.activeMinutesForToday(today)} minutes today.</p>`

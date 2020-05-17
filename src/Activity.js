@@ -33,6 +33,19 @@ class Activity {
     const result = Math.round(activeSteps.numSteps / stepsPerMile)
     return result
   }
+
+  calculateTotalActivityDataPerWeek(date) {
+    const lastSevenDays = []
+    const currentUserActivityData = this.returnCurrentUserActivityData();
+    const selectedDate = currentUserActivityData.find(entry => entry.date === date)
+    const latestEntry = currentUserActivityData.indexOf(selectedDate)
+    for (let i = 0; i < 7; i++) {
+      lastSevenDays.push(currentUserActivityData[latestEntry - i])
+    }
+    console.log(lastSevenDays)
+    return lastSevenDays
+  }
+
 }
 
 
