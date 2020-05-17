@@ -62,10 +62,9 @@ function displayUserData() {
 }
 
 function displayTotalUserStepAverages() {
-  const newObj = userRepository.calculateActivityComparedToAllUsersForToday()
   displayUserStepAverages.innerHTML = `
   <p>Daily Step Goal: ${user.dailyStepGoal}</p>
-  <p>Total User Average Step Goal: ${userRepository.calculateAverageStepGoalForAllUsers()}, ${newObj.numSteps}</p>
+  <p>Total User Average Step Goal: ${userRepository.calculateAverageStepGoalForAllUsers()}</p>
   `
 }
 
@@ -126,16 +125,18 @@ function createActivityData(user) {
 
 
 function displayWeeklyActivityData(activity) {
+  const newObj = userRepository.calculateActivityComparedToAllUsersForToday()
   const thisWeek = activity.calculateTotalActivityDataPerWeek(today)
   const todaysData = thisWeek.splice(0, 1)
-  displayUserStepsToday.innerHTML = `<p>Your daily steps: ${todaysData[0].numSteps}</p>`
+  displayUserStepsToday.innerHTML = `<p>Your daily steps: ${todaysData[0].numSteps}, the daily average of all users is ${newObj.numSteps}. `
   thisWeek.forEach(day => {
     displayUserActiveMinutesWeekly.innerHTML += `<p>On ${day.date} you were active ${day.minutesActive}, walked ${day.numSteps} steps & climbed ${day.flightsOfStairs} flights of stairs.</p>`
   })
 }
 
 function displayActiveMinutesForToday(activity) {
-  displayUserActiveMinutesForToday.innerHTML = `<p>You were active ${activity.activeMinutesForToday(today)} minutes today.</p>`
+  const newObj = userRepository.calculateActivityComparedToAllUsersForToday()
+  displayUserActiveMinutesForToday.innerHTML = `<p>You were active ${activity.activeMinutesForToday(today)} minutes today, the daily average of all users is ${newObj.minutesActive}. </p>`
 }
 
 //Our own metric
