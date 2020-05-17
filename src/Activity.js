@@ -42,15 +42,14 @@ class Activity {
     for (let i = 0; i < 7; i++) {
       lastSevenDays.push(currentUserActivityData[latestEntry - i])
     }
-    console.log(lastSevenDays)
     return lastSevenDays
   }
 
+
+  
+
+
 }
-
-
-
-
 
 
 

@@ -18,6 +18,7 @@ const displayUserActiveMinutesForToday = document.querySelector('.active-minutes
 const displayUserMilesForToday = document.querySelector('.mile-distance-today')
 const displayUserActiveMinutesWeekly = document.querySelector('.active-minutes-weekly')
 const displayUserStepsToday = document.querySelector('.steps-today')
+// const displayTotalUserStepsToday = document.querySelector('.user-steps')
 
 // Events
 window.onload = 
@@ -37,8 +38,14 @@ function createRandomUser() {
   createHydrationData(user)
   createSleepData(user)
   createActivityData(user)
+  // displayTotalUserActivityToday(userRepository)
 }
 
+// function displayTotalUserActivityToday(userRepository) {
+  
+//   displayTotalUserStepsToday.innerHTML = `<p> ${newObj.numSteps}</p>`
+// console.log(newObj);
+// }
 function displayFirstName() {
   displayUserFirstName.innerHTML = `<h1>Welcome ${user.displayFirstNameOnly()}!</h1>`
 }
@@ -55,9 +62,10 @@ function displayUserData() {
 }
 
 function displayTotalUserStepAverages() {
+  const newObj = userRepository.calculateActivityComparedToAllUsersForToday()
   displayUserStepAverages.innerHTML = `
   <p>Daily Step Goal: ${user.dailyStepGoal}</p>
-  <p>Total User Average Step Goal: ${userRepository.calculateAverageStepGoalForAllUsers()}</p>
+  <p>Total User Average Step Goal: ${userRepository.calculateAverageStepGoalForAllUsers()}, ${newObj.numSteps}</p>
   `
 }
 
@@ -112,7 +120,10 @@ function createActivityData(user) {
   displayWeeklyActivityData(activity)
   // testing calculateUserDailyMiles (date), remove at the end and remove comma above
   
+  
 }
+
+
 
 function displayWeeklyActivityData(activity) {
   const thisWeek = activity.calculateTotalActivityDataPerWeek(today)
