@@ -115,11 +115,11 @@ describe('Activity', function() {
   });
 
   it('should calculate total number of miles for a user', function() {
-    expect(activity.calculateUserTotalMiles()).to.equal()
+    expect(activity.calculateUserTotalMiles()).to.equal(23)
   });
 
   it('should calculate total daily of miles for a user', function() {
-    expect(activity.calculateUserDailyMiles(daily)).to.equal()
+    expect(activity.calculateUserDailyMiles('2019/09/22')).to.equal(7)
   });
 
   it('should calculate weekly number of miles for a user', function() {
