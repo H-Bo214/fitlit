@@ -19,7 +19,7 @@ class User {
     return this.userData.find(user => user.id === id)
   }
 
-  displayUserFriendsNames() {
+  displayUserFriendsNames(userData) {
     this.friends.forEach(friend => {
      this.friendsNames.push(userData.find(user => user.id === friend))
     });
