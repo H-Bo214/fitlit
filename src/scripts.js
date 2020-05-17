@@ -17,6 +17,7 @@ const displayUserSleepHoursToday = document.querySelector('.sleep-today')
 const displayUserActiveMinutesForToday = document.querySelector('.active-minutes-today')
 const displayUserMilesForToday = document.querySelector('.mile-distance-today')
 const displayUserActiveMinutesWeekly = document.querySelector('.active-minutes-weekly')
+const displayUserStepsToday = document.querySelector('.steps-today')
 
 // Events
 window.onload = 
@@ -116,6 +117,7 @@ function createActivityData(user) {
 function displayWeeklyActivityData(activity) {
   const thisWeek = activity.calculateTotalActivityDataPerWeek(today)
   const todaysData = thisWeek.splice(0, 1)
+  displayUserStepsToday.innerHTML = `<p>Your daily steps: ${todaysData[0].numSteps}</p>`
   thisWeek.forEach(day => {
     displayUserActiveMinutesWeekly.innerHTML += `<p>On ${day.date} you were active ${day.minutesActive}, walked ${day.numSteps} steps & climbed ${day.flightsOfStairs} flights of stairs.</p>`
   })
