@@ -44,11 +44,11 @@ class Activity {
     return lastSevenDays
   }
 
+
+  
+
+
 }
-
-
-
-
 
 
 
