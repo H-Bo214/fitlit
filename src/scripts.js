@@ -38,6 +38,7 @@ function createRandomUser() {
   createHydrationData(user)
   createSleepData(user)
   createActivityData(user)
+  user.displayUserFriendsNames() 
   // displayTotalUserActivityToday(userRepository)
 }
 
