@@ -6,7 +6,6 @@ class Activity {
 
   returnCurrentUserActivityData() {
    return this.activityData.filter(entry => entry.userID === this.currentUser.id)
-  
   }
 
   activeMinutesForToday(date) {
@@ -21,7 +20,7 @@ class Activity {
   }
 
   calculateUserTotalMiles() {
-    const stepsPerMile = Math.round(5280 / user.strideLength)
+    const stepsPerMile = Math.round(5280 / this.currentUser.strideLength)
     const result = Math.round(this.totalNumberOfSteps() / stepsPerMile)
     return result
   }
@@ -29,7 +28,7 @@ class Activity {
   calculateUserDailyMiles (date) {
     const currentUserActivityData = this.returnCurrentUserActivityData()
     const activeSteps = currentUserActivityData.find(today => today.date === date) 
-    const stepsPerMile = Math.round(5280 / user.strideLength)
+    const stepsPerMile = Math.round(5280 / this.currentUser.strideLength)
     const result = Math.round(activeSteps.numSteps / stepsPerMile)
     return result
   }
@@ -42,7 +41,6 @@ class Activity {
     for (let i = 0; i < 7; i++) {
       lastSevenDays.push(currentUserActivityData[latestEntry - i])
     }
-    console.log(lastSevenDays)
     return lastSevenDays
   }
 
