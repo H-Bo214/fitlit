@@ -110,6 +110,11 @@ describe('Activity', function() {
     expect(activity.activeMinutesForToday("2019/09/22")).to.equal(106)
   });
 
+  it('should calculate total number of steps for a user', function() {
+    expect(activity.totalNumberOfSteps()).to.equal(28443)
+  });
+
+
   // it('should get the current total daily fluid ounces per week', function() {
   //   expect(hydration.calculateTotalDailyFlOzPerWeek('2019/09/22')).to.deep.equal([
   //     { userID: 1, date: '2019/09/22', numOunces: 62 },
