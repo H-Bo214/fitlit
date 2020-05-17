@@ -114,6 +114,68 @@ describe('Activity', function() {
     expect(activity.totalNumberOfSteps()).to.equal(28443)
   });
 
+  it('should calculate total number of miles for a user', function() {
+    expect(activity.calculateUserTotalMiles()).to.equal()
+  });
+
+  it('should calculate total daily of miles for a user', function() {
+    expect(activity.calculateUserDailyMiles(daily)).to.equal()
+  });
+
+  it('should calculate weekly number of miles for a user', function() {
+    expect(activity.calculateTotalActivityDataPerWeek('2019/09/22')).to.deep.equal([
+      {
+      userID: 1,
+      date: '2019/09/22',
+      numSteps: 8015,
+      minutesActive: 106,
+      flightsOfStairs: 37
+     },
+     {
+      userID: 1,
+      date: '2019/09/21',
+      numSteps: 2634,
+      minutesActive: 107,
+      flightsOfStairs: 5
+     },
+     {
+      userID: 1,
+      date: '2019/09/20',
+      numSteps: 3486,
+      minutesActive: 114,
+      flightsOfStairs: 32
+     },
+     {
+      userID: 1,
+      date: '2019/09/19',
+      numSteps: 3577,
+      minutesActive: 140,
+      flightsOfStairs: 16
+     },
+     {
+      userID: 1,
+      date: '2019/09/18',
+      numSteps: 3577,
+      minutesActive: 140,
+      flightsOfStairs: 16
+     },
+     {
+      userID: 1,
+      date: '2019/09/17',
+      numSteps: 3577,
+      minutesActive: 140,
+      flightsOfStairs: 16
+     },
+     {
+      userID: 1,
+      date: '2019/09/16',
+      numSteps: 3577,
+      minutesActive: 140,
+      flightsOfStairs: 16
+     }
+    ])
+  
+  });
 
   // it('should get the current total daily fluid ounces per week', function() {
   //   expect(hydration.calculateTotalDailyFlOzPerWeek('2019/09/22')).to.deep.equal([
