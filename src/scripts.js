@@ -19,7 +19,7 @@ const displayUserMilesForToday = document.querySelector('.mile-distance-today')
 const displayUserActiveMinutesWeekly = document.querySelector('.active-minutes-weekly')
 const displayUserStepsToday = document.querySelector('.steps-today')
 // const displayTotalUserStepsToday = document.querySelector('.user-steps')
-
+const displayUserFlightsOfStairs = document.querySelector('.flights-average')
 // Events
 window.onload = 
 createRandomUser(), 
@@ -107,6 +107,7 @@ function displayTotalSleepDataPerWeek(sleep) {
   <p>Today's Sleep Quality is: ${todaysData[0].sleepQuality}.</p>`
   thisWeek.forEach(day => {
     displayUserSleepHoursPerWeek.innerHTML += `<p>You slept ${day.hoursSlept} hrs  with a sleep quality of ${day.sleepQuality}on ${day.date}.</p>`
+    
   })
 }
 
@@ -119,16 +120,14 @@ function createActivityData(user) {
   displayWeeklyActivityData(activity)
   // testing calculateUserDailyMiles (date), remove at the end and remove comma above
   
-  
 }
-
-
 
 function displayWeeklyActivityData(activity) {
   const newObj = userRepository.calculateActivityComparedToAllUsersForToday()
   const thisWeek = activity.calculateTotalActivityDataPerWeek(today)
   const todaysData = thisWeek.splice(0, 1)
-  displayUserStepsToday.innerHTML = `<p>Your daily steps: ${todaysData[0].numSteps}, the daily average of all users is ${newObj.numSteps}. `
+  displayUserStepsToday.innerHTML = `<p>Your daily steps are ${todaysData[0].numSteps}, the daily average of all users is ${newObj.numSteps}. `
+  displayUserFlightsOfStairs.innerHTML = `<p>Your daily Flights of Stairs are ${todaysData[0].flightsOfStairs}, the daily average of all users is ${newObj.flightsOfStairs}</p>`
   thisWeek.forEach(day => {
     displayUserActiveMinutesWeekly.innerHTML += `<p>On ${day.date} you were active ${day.minutesActive}, walked ${day.numSteps} steps & climbed ${day.flightsOfStairs} flights of stairs.</p>`
   })
@@ -136,10 +135,11 @@ function displayWeeklyActivityData(activity) {
 
 function displayActiveMinutesForToday(activity) {
   const newObj = userRepository.calculateActivityComparedToAllUsersForToday()
-  displayUserActiveMinutesForToday.innerHTML = `<p>You were active ${activity.activeMinutesForToday(today)} minutes today, the daily average of all users is ${newObj.minutesActive}. </p>`
+  displayUserActiveMinutesForToday.innerHTML = `<p>Your daily active minutes are ${activity.activeMinutesForToday(today)} , the daily average of all users is ${newObj.minutesActive}. </p>`
 }
 
 //Our own metric
 function displayTotalMiles(activity) {
   displayUserMilesForToday.innerHTML = `<p>You have walked ${activity.calculateUserDailyMiles (today)} miles today, and a total of ${activity.calculateUserTotalMiles()} miles.</p>`
 }
+
