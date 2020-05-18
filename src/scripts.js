@@ -38,6 +38,7 @@ function createRandomUser() {
   createHydrationData(user)
   createSleepData(user)
   createActivityData(user)
+  // user.displayUserFriendsNames() 
   // displayTotalUserActivityToday(userRepository)
 }
 
@@ -51,14 +52,16 @@ function displayFirstName() {
 }
 
 function displayUserData() {
+  const friendsArray = user.displayUserFriendsNames(userData)
   displayUserInfo.innerHTML = `
   <p>User: ${user.name}</p>
   <p>Address: ${user.address}</p>
   <p>Email: ${user.email}</p>
   <p>Stride Length: ${user.strideLength}</p>
-  <p>Friends: ${user.friends}</p>
+  <p>Friends: ${friendsArray}</p>
   <p>User Id: ${user.id}</p>
   `
+  console.log(friendsArray)
 }
 
 function displayTotalUserStepAverages() {
@@ -131,8 +134,6 @@ function displayWeeklyActivityData(activity) {
   thisWeek.forEach(day => {
     displayUserActiveMinutesWeekly.innerHTML += `<p>On ${day.date} you were active ${day.minutesActive}, walked ${day.numSteps} steps & climbed ${day.flightsOfStairs} flights of stairs.</p>`
   })
-  console.log(newObj);
-  
 }
 
 function displayActiveMinutesForToday(activity) {
