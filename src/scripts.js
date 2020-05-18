@@ -52,16 +52,17 @@ function displayFirstName() {
 }
 
 function displayUserData() {
-  const friendsArray = user.displayUserFriendsNames(userData)
+  user.displayUserFriendsNames(userData)
+  user.returnFriendsNames()
   displayUserInfo.innerHTML = `
   <p>User: ${user.name}</p>
   <p>Address: ${user.address}</p>
   <p>Email: ${user.email}</p>
   <p>Stride Length: ${user.strideLength}</p>
-  <p>Friends: ${friendsArray}</p>
+  <p>Friends: ${user.returnFriendsNames()}</p>
   <p>User Id: ${user.id}</p>
   `
-  console.log(friendsArray)
+  console.log(user.friendsNames)
 }
 
 function displayTotalUserStepAverages() {

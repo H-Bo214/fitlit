@@ -17,29 +17,22 @@ class UserRepository {
     return Math.round(totalDailyStepGoal / this.userData.length)
   }
 
-  // create a method
-    // Compares a users:
-      // number of steps
-      // minutes active
-      // flights of stairs climbed 
-      //  and compare that to all users for the latest day
-      calculateActivityComparedToAllUsersForToday() {
-       const totalDailyData = this.activityData.filter(entry => entry.date === '2019/09/22')
-       .reduce((acc, element) => {
-         acc.numSteps += element.numSteps
-         acc.minutesActive += element.minutesActive
-         acc.flightsOfStairs += element.flightsOfStairs
-        return acc
-       }, {
-         userID : 1000,
-         date : "2019/09/22",
-         numSteps : 0,
-         minutesActive : 0,
-         flightsOfStairs : 0
-       })
-        // console.log(totalDailyData);
-        return totalDailyData
-      }
+  calculateActivityComparedToAllUsersForToday() {
+    const totalDailyData = this.activityData.filter(entry => entry.date === '2019/09/22')
+    .reduce((acc, element) => {
+      acc.numSteps += element.numSteps
+      acc.minutesActive += element.minutesActive
+      acc.flightsOfStairs += element.flightsOfStairs
+    return acc
+    }, {
+      userID : 1000,
+      date : "2019/09/22",
+      numSteps : 0,
+      minutesActive : 0,
+      flightsOfStairs : 0
+    })
+    return totalDailyData
+  }
   
   // Required rubric methods that aren't called
   filterSleepDataByIDs() {

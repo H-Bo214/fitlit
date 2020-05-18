@@ -23,6 +23,16 @@ class User {
     this.friends.forEach(friend => {
      this.friendsNames.push(userData.find(user => user.id === friend))
     });
+    this.returnFriendsNames()
+  }
+
+  returnFriendsNames() { 
+     const namesArray = this.friendsNames.filter(friend => {
+       console.log('friend', friend.name);
+      return friend.name.split(' ')[0]
+    })
+    console.log('namesArray', namesArray)
+    return namesArray
   }
 }
 
