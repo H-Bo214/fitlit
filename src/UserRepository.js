@@ -20,37 +20,30 @@ class UserRepository {
     }, [])
     return friendsNames
   }
- 
-  calculateFriendsWeeklyData(id, date, activityData) {
+  
+  calculateFriendsNumStepsTotal(id) {
     const friends = this.findUserFriendsInformation(id)
-    const selectedDate = this.activityData.slice(4650, 5000)
-    const matchedFriendsActivityData = selectedDate.reduce((acc, entry) => {
+    const selectedData = this.activityData.slice(4650, 5000)
+    const friendData = []
+    selectedData.forEach(entry => {
       friends.forEach(friend => {
         if(friend.id === entry.userID) {
-          acc.push({
+          friendData.push({
               name : friend.name,
               id : friend.id,
               date : entry.date,
               numSteps : entry.numSteps
           })
-        } 
+        }
       })
-      return acc
-    }, []);
-    return matchedFriendsActivityData
-  }
-
-  calculateFriendsNumStepsTotal(id, date, activityData) {
-    const friendData = this.calculateFriendsWeeklyData(id, date, activityData)
-    const newElement = friendData.reduce((acc, entry) => {
+    })
+    return friendData.reduce((acc, entry) => {
       if(!acc[entry.name]) {
         acc[entry.name] = 0
       }
       acc[entry.name] += entry.numSteps
       return acc
     }, {})
-    console.log(newElement)
-    return newElement
   }
 
   calculateAverageStepGoalForAllUsers() {
@@ -113,8 +106,7 @@ class UserRepository {
     return allUserAverages.filter(user => user.avgQual > 3);
   }
 }
-
-   
+  
 
 if (typeof module !== 'undefined') {
   module.exports = UserRepository;
