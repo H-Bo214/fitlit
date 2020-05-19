@@ -13,7 +13,7 @@ class UserRepository {
 
   findUserFriendsInformation(id) {
     const user = this.getUserDataById(id)
-    console.log('user', user)
+    // console.log('user', user)
     const friendsNames = user.friends.reduce((acc, friend) => {
      acc.push(userData.find(user => user.id === friend))
      return acc
@@ -29,8 +29,8 @@ class UserRepository {
         if(friend.id === entry.userID) {
           acc.push({
               name : friend.name,
-              id : friend.id,
-              date : entry.date,
+              // id : friend.id,
+              // date : entry.date,
               numSteps : entry.numSteps
           })
         } 
@@ -50,6 +50,7 @@ class UserRepository {
       return acc
     }, {})
     console.log(newElement)
+    
     return newElement
   }
 

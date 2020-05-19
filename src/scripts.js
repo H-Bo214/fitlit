@@ -20,7 +20,7 @@ const displayUserActiveMinutesWeekly = document.querySelector('.active-minutes-w
 const displayUserStepsToday = document.querySelector('.steps-today')
 const displayUserFlightsOfStairs = document.querySelector('.flights-average')
 const displayUserFriendsInformation = document.querySelector('.user-minutes')
-
+const displayUserFriendsSteps = document.querySelector('.user-flights')
 
 // Events
 window.onload = 
@@ -67,8 +67,11 @@ function displayFriendInformation(userData) {
   friends.forEach(friend => {
     displayUserFriendsInformation.innerHTML += `<p>${friend.name}</p>`
   })
-  userRepository.calculateFriendsWeeklyData(user.id, today, activityData)
-  userRepository.calculateFriendsNumStepsTotal(user.id, today, activityData)
+  const totalFriendSteps = userRepository.calculateFriendsNumStepsTotal(user.id, today, activityData)
+  // totalFriendSteps.forEach(friend => {
+  //   displayUserFriendsSteps.innerHTML += `Friends step counts for ${friend}`
+  // })
+  displayUserFriendsSteps.innerHTML = `${totalFriendSteps}`
 }
 
 function displayTotalUserStepAverages() {
