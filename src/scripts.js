@@ -99,17 +99,17 @@ function createSleepData(user) {
 }
 
 function displayTotalUserAverageSleepHoursEver(sleep) {
-  displayUserSleepHoursAverage.innerHTML = `<p>You have sleep an average of ${sleep.calculateUserTotalAverageSleepHours(user.id)} hours!</p>
-  <p>Your sleep quality is an average of ${sleep.calculateUserTotalAverageSleepQuality(user.id)} </p>` 
+  displayUserSleepHoursAverage.innerHTML = `<p>You sleep an average of ${sleep.calculateUserTotalAverageSleepHours(user.id)} hours</p>
+  <p>Your sleep quality average is ${sleep.calculateUserTotalAverageSleepQuality(user.id)} </p>` 
 }
 
 function displayTotalSleepDataPerWeek(sleep) {
   const thisWeek = sleep.calculateTotalSleepDataPerWeek(today)
   const todaysData = thisWeek.splice(0, 1)
-  displayUserSleepHoursToday.innerHTML = `<p>Today's Total Sleep Hours are: ${todaysData[0].hoursSlept}</p>
-  <p>Today's Sleep Quality is: ${todaysData[0].sleepQuality}.</p>`
+  displayUserSleepHoursToday.innerHTML = `<p>Today: ${todaysData[0].hoursSlept} hours</p>
+  <p>Today: Sleep Quality ${todaysData[0].sleepQuality} hours</p>`
   thisWeek.forEach(day => {
-    displayUserSleepHoursPerWeek.innerHTML += `<p>You slept ${day.hoursSlept} hrs  with a sleep quality of ${day.sleepQuality}on ${day.date}.</p>`
+    displayUserSleepHoursPerWeek.innerHTML += `<p>You slept ${day.hoursSlept} hours on ${day.date} with a sleep quality of ${day.sleepQuality} hours</p>`
     
   })
 }
