@@ -13,6 +13,7 @@ class UserRepository {
 
   findUserFriendsInformation(id) {
     const user = this.getUserDataById(id)
+    console.log('user', user)
     const friendsNames = user.friends.reduce((acc, friend) => {
      acc.push(userData.find(user => user.id === friend))
      return acc
@@ -20,45 +21,38 @@ class UserRepository {
     return friendsNames
   }
  
-  calculateFriendsWeeklyStepTotal(id, date, activityData) {
-    const lastSevenDays = []
+  calculateFriendsWeeklyData(id, date, activityData) {
     const friends = this.findUserFriendsInformation(id)
-    console.log('friends', friends);
-
-    // Filter activity data to the last 7 days, then reduce the friends with that 
-    // data
-    const matchedFriendsActivityData = this.activityData.reduce((acc, entry) => {
+    const selectedDate = this.activityData.slice(4650, 5000)
+    const matchedFriendsActivityData = selectedDate.reduce((acc, entry) => {
       friends.forEach(friend => {
         if(friend.id === entry.userID) {
-          acc.push(
-            {
-            name : friend.name,
-            id : friend.id,
-            date : entry.date,
-            numSteps : entry.numSteps
-            }
-          )
-        }
+          acc.push({
+              name : friend.name,
+              id : friend.id,
+              date : entry.date,
+              numSteps : entry.numSteps
+          })
+        } 
       })
       return acc
-    }, [])
-
-    console.log('matchedFriendsActivityData', matchedFriendsActivityData)
-    // We need to filter for todays date, and get an array of our friends 
-    // data for today, and work backwards
-    const selectedDate = friends.filter(entry => entry.date === date)
-    console.log('selectedDate', selectedDate);
-    
-    const latestEntry = friends.indexOf(selectedDate)
-    for (let i = 0; i < 7; i++) {
-      lastSevenDays.push(friends[latestEntry - i])
-    }
-    console.log('lastSevenDays', lastSevenDays);
-    
-    return lastSevenDays
-
+    }, []);
+    return matchedFriendsActivityData
   }
-  
+
+  calculateFriendsNumStepsTotal(id, date, activityData) {
+    const friendData = this.calculateFriendsWeeklyData(id, date, activityData)
+    const newElement = friendData.reduce((acc, entry) => {
+      if(!acc[entry.name]) {
+        acc[entry.name] = 0
+      }
+      acc[entry.name] += entry.numSteps
+      return acc
+    }, {})
+    console.log(newElement)
+    return newElement
+  }
+
   calculateAverageStepGoalForAllUsers() {
     const totalDailyStepGoal = this.userData.reduce((acc, data) => {
       return acc += data.dailyStepGoal

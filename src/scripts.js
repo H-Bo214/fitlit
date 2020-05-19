@@ -67,11 +67,8 @@ function displayFriendInformation(userData) {
   friends.forEach(friend => {
     displayUserFriendsInformation.innerHTML += `<p>${friend.name}</p>`
   })
-  const friendGoals = userRepository.calculateFriendsWeeklyStepTotal(user.id, today, activityData)
-  // console.log('Scripts - friendGoals', friendGoals);
-  // console.log('scritps - user.id', user.id);
-  
-  
+  userRepository.calculateFriendsWeeklyData(user.id, today, activityData)
+  userRepository.calculateFriendsNumStepsTotal(user.id, today, activityData)
 }
 
 function displayTotalUserStepAverages() {
