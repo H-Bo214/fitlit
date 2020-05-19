@@ -60,7 +60,7 @@ function displayUserData() {
 function displayFriendInformation(userData) {
   const friends = userRepository.calculateFriendsNumStepsTotal(user.id);
   for(const friend in friends) {
-    displayUserFriendsInformation.innerHTML += `<p>${friend}'s weekly total steps:${friends[friend]} </p>`;
+    displayUserFriendsInformation.innerHTML += `<p>${friend}'s weekly total steps: ${friends[friend]} </p>`;
   }
   const keys = Object.keys(friends).sort((a,b) => friends[b] - friends[a], [0])
   displayUserFriendsInformation.insertAdjacentText('beforeend', `${keys[0]} had the most steps last week!`)
