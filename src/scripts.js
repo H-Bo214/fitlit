@@ -27,7 +27,10 @@ window.onload =
 createRandomUser(), 
 displayUserData(), 
 displayFirstName(), 
-displayTotalUserStepAverages();
+displayTotalUserStepAverages(),
+/// Delete the function below, use ;
+userRepository.getBestSleeper(today);
+console.log(userRepository.getWorstSleeper(today));
 
 
 
