@@ -63,23 +63,31 @@ h3 {
   margin-bottom: 6px;
 }
 
+.hydration-section {
+  background-color: #0592eb;
+  border-radius: 10px;
+  width: 28em;
+}
 .hydration-data {
-  border: 2px solid blue;
+  background: #b1dffc;
+  border-radius: 4px;
   padding:6px;
 }
 
 .hydration-today {
-  border: 2px solid blue;
   margin-bottom: 6px;
+  text-align: center;
 }
 
 .hydration-week {
-  border: 2px solid blue;
   margin-bottom: 6px;
+  text-align: center;
+  border: 2px solid #fcfcfc;
+  border-radius: 4px;
 }
 
 .hydration-total-FlOz {
-  border: 2px solid blue;
+  text-align: center;
 }
 
 .sleep-data {

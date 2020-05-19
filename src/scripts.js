@@ -79,15 +79,15 @@ function createHydrationData(user) {
 }
 
 function displayTotalUserFlOzConsumedEver(hydration) {
-  displayTotalUserFlOz.innerHTML = `<p>You have consumed ${hydration.calculateTotalAverageDailyFlOz(user.id)} total Fluid Ozs & counting!</p>`
+  displayTotalUserFlOz.innerHTML = `<p> ${hydration.calculateTotalAverageDailyFlOz(user.id)} total fl oz & counting!</p>`
 }
 
 function displayTotalUserFlOzPerWeek(hydration) {
   const thisWeek = hydration.calculateTotalDailyFlOzPerWeek(today)
   const todaysData = thisWeek.splice(0, 1)
-  displayTodaysFlOz.innerHTML = `Today's intake is: ${todaysData[0].numOunces} Fl Ozs.`
+  displayTodaysFlOz.innerHTML = `Today: ${todaysData[0].numOunces} fl oz`
   thisWeek.forEach(day => {
-    displayUserFlOzPerWeek.innerHTML += `<p>You have consumed ${day.numOunces} total Fluid Ozs on ${day.date}.</p>`
+    displayUserFlOzPerWeek.innerHTML += `<p> ${day.numOunces} fl oz on ${day.date}</p>`
   })
 }
 
