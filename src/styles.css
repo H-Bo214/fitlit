@@ -2,19 +2,24 @@
 *:before,
 *:after {
   box-sizing: border-box;
-  background-color:lightgray;
+  font-family: 'Lato', sans-serif;
 }
 
 header { 
-  border: 2px solid black;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
+  border: 2px solid #00a8cc;
+  background: #00a8cc;
+  border-radius: 4px;
 }
 
 h1 {
   padding: 10px;
+  background-color: #00a8cc;
+  color: #FFF;
+  text-align: center;
 }
+
 main {
-  border: 2px solid black;
   display: flex;
 }
 
@@ -26,18 +31,26 @@ main {
   margin: 8px;
 }
 
-h4 {
+.user-section {
+  background-color: #ffa41b;
+  border-radius: 10px;
+}
+
+h3 {
   text-align: center;
 }
 
 .display-user-info {
-  border: 2px solid greenyellow;
+  background: #fcdfb3;
   padding:6px;
+  border-radius: 4px;
 }
 
 .user-steps {
-  border: 2px solid greenyellow;
+  border-radius: 4px;
   margin-bottom: 6px;
+  text-align: center;
+  background: #fcdfb3;
 }
 
 .user-minutes {
