@@ -43,11 +43,6 @@ function createRandomUser() {
   displayFriendInformation(userData)
 }
 
-// function displayTotalUserActivityToday(userRepository) {
-  
-//   displayTotalUserStepsToday.innerHTML = `<p> ${newObj.numSteps}</p>`
-// console.log(newObj);
-// }
 function displayFirstName() {
   displayUserFirstName.innerHTML = `<h1>Welcome ${user.displayFirstNameOnly()}!</h1>`
 }
@@ -63,12 +58,12 @@ function displayUserData() {
 }
 
 function displayFriendInformation(userData) {
-  const friends = userRepository.findUserFriendsInformation(user.id)
-  friends.forEach(friend => {
-    displayUserFriendsInformation.innerHTML += `<p>${friend.name}</p>`
-  })
-  userRepository.calculateFriendsWeeklyData(user.id, today, activityData)
-  userRepository.calculateFriendsNumStepsTotal(user.id, today, activityData)
+  const friends = userRepository.calculateFriendsNumStepsTotal(user.id);
+  for(const friend in friends) {
+    displayUserFriendsInformation.innerHTML += `<p>${friend}'s weekly total steps:${friends[friend]} </p>`;
+  }
+  const keys = Object.keys(friends).sort((a,b) => friends[b] - friends[a], [0])
+  displayUserFriendsInformation.insertAdjacentText('beforeend', `${keys[0]} had the most steps last week!`)
 }
 
 function displayTotalUserStepAverages() {
