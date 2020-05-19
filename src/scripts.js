@@ -86,15 +86,15 @@ function createHydrationData(user) {
 }
 
 function displayTotalUserFlOzConsumedEver(hydration) {
-  displayTotalUserFlOz.innerHTML = `<p>You have consumed ${hydration.calculateTotalAverageDailyFlOz(user.id)} total Fluid Ozs & counting!</p>`
+  displayTotalUserFlOz.innerHTML = `<p> ${hydration.calculateTotalAverageDailyFlOz(user.id)} total fl oz & counting!</p>`
 }
 
 function displayTotalUserFlOzPerWeek(hydration) {
   const thisWeek = hydration.calculateTotalDailyFlOzPerWeek(today)
   const todaysData = thisWeek.splice(0, 1)
-  displayTodaysFlOz.innerHTML = `Today's intake is: ${todaysData[0].numOunces} Fl Ozs.`
+  displayTodaysFlOz.innerHTML = `Today: ${todaysData[0].numOunces} fl oz`
   thisWeek.forEach(day => {
-    displayUserFlOzPerWeek.innerHTML += `<p>You have consumed ${day.numOunces} total Fluid Ozs on ${day.date}.</p>`
+    displayUserFlOzPerWeek.innerHTML += `<p> ${day.numOunces} fl oz on ${day.date}</p>`
   })
 }
 
@@ -106,17 +106,17 @@ function createSleepData(user) {
 }
 
 function displayTotalUserAverageSleepHoursEver(sleep) {
-  displayUserSleepHoursAverage.innerHTML = `<p>You have sleep an average of ${sleep.calculateUserTotalAverageSleepHours(user.id)} hours!</p>
-  <p>Your sleep quality is an average of ${sleep.calculateUserTotalAverageSleepQuality(user.id)} </p>` 
+  displayUserSleepHoursAverage.innerHTML = `<p>You sleep an average of ${sleep.calculateUserTotalAverageSleepHours(user.id)} hours</p>
+  <p>Your sleep quality average is ${sleep.calculateUserTotalAverageSleepQuality(user.id)} </p>` 
 }
 
 function displayTotalSleepDataPerWeek(sleep) {
   const thisWeek = sleep.calculateTotalSleepDataPerWeek(today)
   const todaysData = thisWeek.splice(0, 1)
-  displayUserSleepHoursToday.innerHTML = `<p>Today's Total Sleep Hours are: ${todaysData[0].hoursSlept}</p>
-  <p>Today's Sleep Quality is: ${todaysData[0].sleepQuality}.</p>`
+  displayUserSleepHoursToday.innerHTML = `<p>Today: ${todaysData[0].hoursSlept} hours</p>
+  <p>Today: Sleep Quality ${todaysData[0].sleepQuality} hours</p>`
   thisWeek.forEach(day => {
-    displayUserSleepHoursPerWeek.innerHTML += `<p>You slept ${day.hoursSlept} hrs  with a sleep quality of ${day.sleepQuality}on ${day.date}.</p>`
+    displayUserSleepHoursPerWeek.innerHTML += `<p>You slept ${day.hoursSlept} hours on ${day.date} with a sleep quality of ${day.sleepQuality} hours</p>`
     
   })
 }
@@ -136,7 +136,7 @@ function displayWeeklyActivityData(activity) {
   const newObj = userRepository.calculateActivityComparedToAllUsersForToday()
   const thisWeek = activity.calculateTotalActivityDataPerWeek(today)
   const todaysData = thisWeek.splice(0, 1)
-  displayUserStepsToday.innerHTML = `<p>Your daily steps are ${todaysData[0].numSteps}, the total for all users today is ${newObj.numSteps}. `
+  displayUserStepsToday.innerHTML = `<p>Today: ${todaysData[0].numSteps} steps</p> <p> All user steps today: ${newObj.numSteps}.</p> `
   displayUserFlightsOfStairs.innerHTML = `<p>Your daily Flights of Stairs are ${todaysData[0].flightsOfStairs}, the total for all users today is ${newObj.flightsOfStairs}</p>`
   thisWeek.forEach(day => {
     displayUserActiveMinutesWeekly.innerHTML += `<p>On ${day.date} you were active ${day.minutesActive}, walked ${day.numSteps} steps & climbed ${day.flightsOfStairs} flights of stairs.</p>`
