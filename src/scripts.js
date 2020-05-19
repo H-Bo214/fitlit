@@ -129,7 +129,7 @@ function displayWeeklyActivityData(activity) {
   const newObj = userRepository.calculateActivityComparedToAllUsersForToday()
   const thisWeek = activity.calculateTotalActivityDataPerWeek(today)
   const todaysData = thisWeek.splice(0, 1)
-  displayUserStepsToday.innerHTML = `<p>Your daily steps are ${todaysData[0].numSteps}, the total for all users today is ${newObj.numSteps}. `
+  displayUserStepsToday.innerHTML = `<p>Today: ${todaysData[0].numSteps} steps</p> <p> All user steps today: ${newObj.numSteps}.</p> `
   displayUserFlightsOfStairs.innerHTML = `<p>Your daily Flights of Stairs are ${todaysData[0].flightsOfStairs}, the total for all users today is ${newObj.flightsOfStairs}</p>`
   thisWeek.forEach(day => {
     displayUserActiveMinutesWeekly.innerHTML += `<p>On ${day.date} you were active ${day.minutesActive}, walked ${day.numSteps} steps & climbed ${day.flightsOfStairs} flights of stairs.</p>`

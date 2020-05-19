@@ -122,62 +122,77 @@ h3 {
   text-align: center;
 }
 
+.activity-section {
+  background-color: #ff3b52;
+  border-radius: 10px;
+}
 .step-data {
-  border: 2px solid red;
   padding:6px;
   margin-bottom: 6px;
+  background-color: #fac0c7;
+  border-radius: 4px;
 }
 
 .flights-average {
-  border: 2px solid red;
+  border: 2px solid #fcfcfc;
   padding:6px;
   margin-bottom: 6px;
+  border-radius: 4px;
 }
 
 .steps-today {
-  border: 2px solid red;
+  border: 2px solid #fcfcfc;
   padding:6px;
   margin-bottom: 6px;
+  border-radius: 4px;
+  text-align: center;
 }
 
 .steps-weekly {
-  border: 2px solid red;
+  border: 2px solid #fcfcfc;
   padding:6px;
   margin-bottom: 6px;
 }
 
 .active-minutes {
-  border: 2px solid red;
+  border: 2px solid #fcfcfc;
+  background-color: #fac0c7;
   padding:6px;
   margin-bottom: 6px;
+  border-radius: 4px;
 }
 
 .active-minutes-today {
-  border: 2px solid red;
+  border: 2px solid #fcfcfc;
   padding:6px;
   margin-bottom: 6px;
+  border-radius: 4px;
 }
 
 .active-minutes-weekly {
-  border: 2px solid red;
+  border: 2px solid #fcfcfc;
   padding:6px;
   margin-bottom: 6px;
+  border-radius: 4px;
 }
 
 .walking {
-  border: 2px solid red;
+  border: 2px solid #fcfcfc;
+  background-color: #fac0c7;
   padding:6px;
   margin-bottom: 6px;
+  border-radius: 4px;
 }
 
 .mile-distance-today {
-  border: 2px solid red;
+  border: 2px solid #fcfcfc;
   padding:6px;
   margin-bottom: 6px;
+  border-radius: 4px;
 }
 
 .flight-data-weekly {
-  border: 2px solid red;
+  border: 2px solid #fcfcfc;
   padding:6px;
   margin-bottom: 6px;
 }
