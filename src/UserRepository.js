@@ -4,12 +4,55 @@ class UserRepository {
     this.hydrationData = hydrationData
     this.sleepData = sleepData;
     this.activityData = activityData;
+    this.friendsNames = [];
   }
 
   getUserDataById(id) {
     return this.userData.find(user => user.id === id)
   }
-  
+
+  findUserFriendsInformation(id) {
+    const user = this.getUserDataById(id)
+    console.log('user', user)
+    const friendsNames = user.friends.reduce((acc, friend) => {
+     acc.push(userData.find(user => user.id === friend))
+     return acc
+    }, [])
+    return friendsNames
+  }
+ 
+  calculateFriendsWeeklyData(id, date, activityData) {
+    const friends = this.findUserFriendsInformation(id)
+    const selectedDate = this.activityData.slice(4650, 5000)
+    const matchedFriendsActivityData = selectedDate.reduce((acc, entry) => {
+      friends.forEach(friend => {
+        if(friend.id === entry.userID) {
+          acc.push({
+              name : friend.name,
+              id : friend.id,
+              date : entry.date,
+              numSteps : entry.numSteps
+          })
+        } 
+      })
+      return acc
+    }, []);
+    return matchedFriendsActivityData
+  }
+
+  calculateFriendsNumStepsTotal(id, date, activityData) {
+    const friendData = this.calculateFriendsWeeklyData(id, date, activityData)
+    const newElement = friendData.reduce((acc, entry) => {
+      if(!acc[entry.name]) {
+        acc[entry.name] = 0
+      }
+      acc[entry.name] += entry.numSteps
+      return acc
+    }, {})
+    console.log(newElement)
+    return newElement
+  }
+
   calculateAverageStepGoalForAllUsers() {
     const totalDailyStepGoal = this.userData.reduce((acc, data) => {
       return acc += data.dailyStepGoal
@@ -17,29 +60,22 @@ class UserRepository {
     return Math.round(totalDailyStepGoal / this.userData.length)
   }
 
-  // create a method
-    // Compares a users:
-      // number of steps
-      // minutes active
-      // flights of stairs climbed 
-      //  and compare that to all users for the latest day
-      calculateActivityComparedToAllUsersForToday() {
-       const totalDailyData = this.activityData.filter(entry => entry.date === '2019/09/22')
-       .reduce((acc, element) => {
-         acc.numSteps += element.numSteps
-         acc.minutesActive += element.minutesActive
-         acc.flightsOfStairs += element.flightsOfStairs
-        return acc
-       }, {
-         userID : 1000,
-         date : "2019/09/22",
-         numSteps : 0,
-         minutesActive : 0,
-         flightsOfStairs : 0
-       })
-        // console.log(totalDailyData);
-        return totalDailyData
-      }
+  calculateActivityComparedToAllUsersForToday() {
+    const totalDailyData = this.activityData.filter(entry => entry.date === '2019/09/22')
+    .reduce((acc, element) => {
+      acc.numSteps += element.numSteps
+      acc.minutesActive += element.minutesActive
+      acc.flightsOfStairs += element.flightsOfStairs
+    return acc
+    }, {
+      userID : 1000,
+      date : "2019/09/22",
+      numSteps : 0,
+      minutesActive : 0,
+      flightsOfStairs : 0
+    })
+    return totalDailyData
+  }
   
   // Required rubric methods that aren't called
   filterSleepDataByIDs() {
