@@ -7,7 +7,6 @@ class User {
     this.strideLength = userData.strideLength;
     this.dailyStepGoal = userData.dailyStepGoal;
     this.friends = userData.friends 
-    this.friendsNames = []
   }
 
   displayFirstNameOnly() {
@@ -19,21 +18,6 @@ class User {
     return this.userData.find(user => user.id === id)
   }
 
-  displayUserFriendsNames(userData) {
-    this.friends.forEach(friend => {
-     this.friendsNames.push(userData.find(user => user.id === friend))
-    });
-    this.returnFriendsNames()
-  }
-
-  returnFriendsNames() { 
-     const namesArray = this.friendsNames.filter(friend => {
-       console.log('friend', friend.name);
-      return friend.name.split(' ')[0]
-    })
-    console.log('namesArray', namesArray)
-    return namesArray
-  }
 }
 
 if (typeof module !== 'undefined') {

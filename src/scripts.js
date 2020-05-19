@@ -18,8 +18,10 @@ const displayUserActiveMinutesForToday = document.querySelector('.active-minutes
 const displayUserMilesForToday = document.querySelector('.mile-distance-today')
 const displayUserActiveMinutesWeekly = document.querySelector('.active-minutes-weekly')
 const displayUserStepsToday = document.querySelector('.steps-today')
-// const displayTotalUserStepsToday = document.querySelector('.user-steps')
 const displayUserFlightsOfStairs = document.querySelector('.flights-average')
+const displayUserFriendsInformation = document.querySelector('.user-minutes')
+
+
 // Events
 window.onload = 
 createRandomUser(), 
@@ -38,8 +40,7 @@ function createRandomUser() {
   createHydrationData(user)
   createSleepData(user)
   createActivityData(user)
-  // user.displayUserFriendsNames() 
-  // displayTotalUserActivityToday(userRepository)
+  displayFriendInformation(userData)
 }
 
 // function displayTotalUserActivityToday(userRepository) {
@@ -52,17 +53,25 @@ function displayFirstName() {
 }
 
 function displayUserData() {
-  user.displayUserFriendsNames(userData)
-  user.returnFriendsNames()
   displayUserInfo.innerHTML = `
   <p>User: ${user.name}</p>
   <p>Address: ${user.address}</p>
   <p>Email: ${user.email}</p>
   <p>Stride Length: ${user.strideLength}</p>
-  <p>Friends: ${user.returnFriendsNames()}</p>
   <p>User Id: ${user.id}</p>
   `
-  console.log(user.friendsNames)
+}
+
+function displayFriendInformation(userData) {
+  const friends = userRepository.findUserFriendsInformation(user.id)
+  friends.forEach(friend => {
+    displayUserFriendsInformation.innerHTML += `<p>${friend.name}</p>`
+  })
+  const friendGoals = userRepository.calculateFriendsWeeklyStepTotal(user.id, today, activityData)
+  // console.log('Scripts - friendGoals', friendGoals);
+  // console.log('scritps - user.id', user.id);
+  
+  
 }
 
 function displayTotalUserStepAverages() {
