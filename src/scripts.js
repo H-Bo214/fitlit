@@ -106,13 +106,8 @@ function createSleepData(user) {
 function displayTotalUserAverageSleepHoursEver(sleep) {
   displayUserSleepHoursAverage.innerHTML = `<p>You sleep an average of ${sleep.calculateUserTotalAverageSleepHours(user.id)} hours</p>
   <p>Your sleep quality average is ${sleep.calculateUserTotalAverageSleepQuality(user.id)} </p>` 
-
-
   const  worstSleeper = userRepository.getWorstSleeper(today)
-  
-
-  
-  displayWorstSleeperToday.innerHTML = `<p> Today's worst sleeper is user ${worstSleeper[0].userID} with ${worstSleeper[0].hoursSlept} hours slept.</p>`
+  displayWorstSleeperToday.innerHTML = `<p> The worst user slept ${worstSleeper[0].hoursSlept} hours today.</p>`
 }
 
 function displayTotalSleepDataPerWeek(sleep) {
