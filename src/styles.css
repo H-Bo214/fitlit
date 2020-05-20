@@ -69,6 +69,7 @@ h2 {
   border-radius: 10px;
   width: 28em;
 }
+
 .hydration-data {
   border-radius: 4px;
   padding:6px;
@@ -157,7 +158,6 @@ h2 {
   margin-bottom: 6px;
   border-radius: 4px;
   background-color: #fac0c7;
- 
 }
 
 .active-minutes-today {
@@ -185,16 +185,12 @@ h2 {
   margin-bottom: 6px;
 }
 
-@media only screen and (max-width: 400px) {
-
-}
-
 @media only screen and (max-width: 780px) {
-
   main {
     flex-wrap: wrap;
     text-align: center;
   }
+
   .user-section {
     background-color: #ffa41b;
     border-radius: 10px;
@@ -212,12 +208,12 @@ h2 {
     border-radius: 10px;
     flex-grow: 2;
   }
+
   .hydration-section {
     background-color: #0592eb;
     border-radius: 10px;
     width: 28em;
     flex-grow: 2;
   }
-
 
 }
