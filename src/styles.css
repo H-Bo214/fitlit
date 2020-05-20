@@ -64,31 +64,17 @@ h2 {
   text-align: center;
 }
 
-.user-flights {
-  border: 2px solid greenyellow;
-  margin-bottom: 6px;
-}
-
 .hydration-section {
   background-color: #0592eb;
   border-radius: 10px;
   width: 28em;
 }
 .hydration-data {
-  
   border-radius: 4px;
   padding:6px;
 }
 
-.hydration-today {
-  margin-bottom: 6px;
-  text-align: center;
-  border: 2px solid #fcfcfc;
-  border-radius: 4px;
-  background: #b1dffc;
-}
-
-.hydration-week {
+.hydration-today, .hydration-week {
   margin-bottom: 6px;
   text-align: center;
   border: 2px solid #fcfcfc;
@@ -107,6 +93,7 @@ h2 {
   background-color: #ca1be0;
   border-radius: 10px;
 }
+
 .sleep-data {
   padding:6px;
   border-radius: 4px;
@@ -129,7 +116,7 @@ h2 {
   background-color: #f5cffa;
 }
 
-.sleep-all-time {
+.sleep-all-time, .worst-sleep {
   border: 2px solid #fcfcfc;
   border-radius: 4px;
   padding:6px;
@@ -138,46 +125,24 @@ h2 {
   margin-bottom: 6px;
 }
 
-.worst-sleep {
-  border: 2px solid #fcfcfc;
-  border-radius: 4px;
-  padding:6px;
-  margin-bottom: 6px;
-  text-align: center;
-  background-color: #f5cffa;;
-}
-
 .activity-section {
   background-color: #ff3b52;
   border-radius: 10px;
 }
-.step-data {
-  padding:6px;
-  margin-bottom: 6px;
-  border-radius: 4px;
-}
 
-.flights-average {
+.flights-average, .steps-today {
   border: 2px solid #fcfcfc;
   padding:6px;
   margin-bottom: 6px;
   border-radius: 4px;
   background-color: #fac0c7;
-}
-
-.steps-today {
-  border: 2px solid #fcfcfc;
-  padding:6px;
-  margin-bottom: 6px;
-  border-radius: 4px;
   text-align: center;
-  background-color: #fac0c7;
 }
 
 .steps-weekly {
   border: 2px solid #fcfcfc;
-  padding:6px;
   margin-bottom: 6px;
+  padding:6px;
 }
 
 .active-minutes {
@@ -186,24 +151,20 @@ h2 {
   border-radius: 4px;
 }
 
-.active-minutes-today {
+.active-minutes-today, .active-minutes-weekly {
   border: 2px solid #fcfcfc;
   padding:6px;
   margin-bottom: 6px;
   border-radius: 4px;
   background-color: #fac0c7;
+ 
 }
 
-.active-minutes-weekly {
-  border: 2px solid #fcfcfc;
-  padding:6px;
-  margin-bottom: 6px;
-  border-radius: 4px;
-  background-color: #fac0c7;
+.active-minutes-today {
+  text-align: center;
 }
 
 .walking {
-  
   padding:6px;
   margin-bottom: 6px;
   border-radius: 4px;
@@ -215,6 +176,7 @@ h2 {
   margin-bottom: 6px;
   border-radius: 4px;
   background-color: #fac0c7;
+  text-align: center;
 }
 
 .flight-data-weekly {
