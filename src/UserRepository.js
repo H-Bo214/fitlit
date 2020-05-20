@@ -99,6 +99,24 @@ class UserRepository {
     }, []);
     return allUserAverages.filter(user => user.avgQual > 3);
   }
+
+    //For a given day (identified by the date), find the users who slept the most number of hours (one or more if they tied)
+
+    // Rubric required, method not called.
+    getBestSleeper(date) {
+      const sortedList = this.sleepData.filter(entry => entry.date === date).sort((a, b) => b.hoursSlept - a.hoursSlept)
+      const bestSleep = sortedList[0]
+      return sortedList.filter(entry => entry.hoursSlept === bestSleep.hoursSlept)
+    }
+
+    //Own metric to display
+    getWorstSleeper(date) {
+      const sortedList = this.sleepData.filter(entry => entry.date === date).sort((a, b) => a.hoursSlept - b.hoursSlept)
+      const bestSleep = sortedList[0]
+      return sortedList.filter(entry => entry.hoursSlept === bestSleep.hoursSlept)
+    }
+    
+    
 }
 
 if (typeof module !== 'undefined') {
