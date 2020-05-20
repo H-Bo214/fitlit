@@ -77,8 +77,6 @@ describe('Activity', function() {
       "flightsOfStairs": 37
     },
   ]
-
-
     activity = new Activity(data, user)
     
   })

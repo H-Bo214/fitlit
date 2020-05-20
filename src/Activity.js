@@ -43,13 +43,7 @@ class Activity {
     }
     return lastSevenDays
   }
-
-
-  
-
-
 }
-
 
 
 if (typeof module !== 'undefined') {

@@ -36,7 +36,6 @@ class Sleep {
     }
     return lastSevenDays
   }
-
 }
 
 if (typeof module !== 'undefined') {
