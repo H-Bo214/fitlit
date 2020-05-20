@@ -1,7 +1,7 @@
 # FitLit 
 
-A Mod 2, paired project that simulates an activity-type application that tracks a users activities, such as hydration, stairs, sleep and more. 
-The details of this project are outline in [this project spec](http://frontend.turing.io/projects/fitlit.html).
+A Mod 2, paired project that simulates an activity-based application that tracks a users activities, such as hydration intake, stairs, sleep and more. 
+The details of this project are outlined in [this project spec](http://frontend.turing.io/projects/fitlit.html).
 
 ## Setup
 
@@ -12,13 +12,14 @@ The details of this project are outline in [this project spec](http://frontend.t
 
 ## Application
 ![Desktop Demo](https://media.giphy.com/media/eLiv01ecfiMCg0nQ2a/giphy.gif)
+
 [click here for link to our github page](https://melizzo.github.io/fitlit/)
 
 ## Learning Goals
 
-1. Utulize data files 
-2. Utulize clas files that main user/users/activities
-3. Testing all files, including sad paths
+1. Utilize data files 
+2. Utilize & organize class files that share data: user/users/activities, etc
+3. Testing all files
 4. SRP and DRY code
 5. Work remotely to ensure a successful project. 
 6. Add media Queries for responsiveness
