@@ -11,7 +11,7 @@ The details of this project are outlined in [this project spec](http://frontend.
 4. run `open src/index.html`
 
 ## Application
-![Desktop Demo](https://media.giphy.com/media/eLiv01ecfiMCg0nQ2a/giphy.gif)
+![Desktop Demo](https://media.giphy.com/media/dZXDJco9CMDgJkV8kz/giphy.gif)
 
 [click here for link to our github page](https://melizzo.github.io/fitlit/)
 
