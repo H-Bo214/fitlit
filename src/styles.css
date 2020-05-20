@@ -135,6 +135,16 @@ h2 {
   padding:6px;
   text-align: center;
   background-color: #f5cffa;
+  margin-bottom: 6px;
+}
+
+.worst-sleep {
+  border: 2px solid #fcfcfc;
+  border-radius: 4px;
+  padding:6px;
+  margin-bottom: 6px;
+  text-align: center;
+  background-color: #f5cffa;;
 }
 
 .activity-section {

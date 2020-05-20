@@ -20,17 +20,17 @@ const displayUserActiveMinutesWeekly = document.querySelector('.active-minutes-w
 const displayUserStepsToday = document.querySelector('.steps-today')
 const displayUserFlightsOfStairs = document.querySelector('.flights-average')
 const displayUserFriendsInformation = document.querySelector('.user-minutes')
-
+const displayWorstSleeperToday = document.querySelector('.worst-sleep')
 
 // Events
 window.onload = 
 createRandomUser(), 
 displayUserData(), 
 displayFirstName(), 
-displayTotalUserStepAverages(),
+displayTotalUserStepAverages();
 /// Delete the function below, use ;
-userRepository.getBestSleeper(today);
-console.log(userRepository.getWorstSleeper(today));
+
+console.log('worstSleeper console log',userRepository.getWorstSleeper(today));
 
 
 
@@ -106,6 +106,13 @@ function createSleepData(user) {
 function displayTotalUserAverageSleepHoursEver(sleep) {
   displayUserSleepHoursAverage.innerHTML = `<p>You sleep an average of ${sleep.calculateUserTotalAverageSleepHours(user.id)} hours</p>
   <p>Your sleep quality average is ${sleep.calculateUserTotalAverageSleepQuality(user.id)} </p>` 
+
+
+  const  worstSleeper = userRepository.getWorstSleeper(today)
+  
+
+  
+  displayWorstSleeperToday.innerHTML = `<p> Today's worst sleeper is user ${worstSleeper[0].userID} with ${worstSleeper[0].hoursSlept} hours slept.</p>`
 }
 
 function displayTotalSleepDataPerWeek(sleep) {
