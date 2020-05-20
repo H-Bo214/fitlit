@@ -13,7 +13,7 @@ class UserRepository {
   findUserFriendsInformation(id) {
     const user = this.getUserDataById(id)
     return user.friends.reduce((acc, friend) => {
-     acc.push(userData.find(user => user.id === friend))
+     acc.push(this.userData.find(user => user.id === friend))
      return acc
     }, [])
   }
@@ -70,6 +70,12 @@ class UserRepository {
     const bestSleep = sortedList[0]
     return sortedList.filter(entry => entry.hoursSlept === bestSleep.hoursSlept)
   }
+
+  getBestSleeper(date) {
+    const sortedList = this.sleepData.filter(entry => entry.date === date).sort((a, b) => b.hoursSlept - a.hoursSlept)
+    const bestSleep = sortedList[0]
+    return sortedList.filter(entry => entry.hoursSlept === bestSleep.hoursSlept)
+  } 
   
   // Required rubric methods that aren't called
   filterSleepDataByIDs() {
@@ -106,12 +112,6 @@ class UserRepository {
     }, []);
     return allUserAverages.filter(user => user.avgQual > 3);
   }
-  
-  getBestSleeper(date) {
-    const sortedList = this.sleepData.filter(entry => entry.date === date).sort((a, b) => b.hoursSlept - a.hoursSlept)
-    const bestSleep = sortedList[0]
-    return sortedList.filter(entry => entry.hoursSlept === bestSleep.hoursSlept)
-  } 
 }
 
 if (typeof module !== 'undefined') {
