@@ -10,6 +10,9 @@ The details of this project are outline in [this project spec](http://frontend.t
 3. run npm install
 4. run `open src/index.html`
 
+## Application
+![Desktop Demo](https://media.giphy.com/media/eLiv01ecfiMCg0nQ2a/giphy.gif)
+[click here for link to our github page](https://melizzo.github.io/fitlit/)
 
 ## Learning Goals
 
@@ -18,6 +21,7 @@ The details of this project are outline in [this project spec](http://frontend.t
 3. Testing all files, including sad paths
 4. SRP and DRY code
 5. Work remotely to ensure a successful project. 
+6. Add media Queries for responsiveness
 
 ## Contributors
 
