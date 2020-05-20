@@ -101,8 +101,9 @@ function createSleepData(user) {
 function displayTotalUserAverageSleepHoursEver(sleep) {
   displayUserSleepHoursAverage.innerHTML = `<p>You sleep an average of ${sleep.calculateUserTotalAverageSleepHours(user.id)} hours</p>
   <p>Your sleep quality average is ${sleep.calculateUserTotalAverageSleepQuality(user.id)} </p>` 
-  const  worstSleeper = userRepository.getWorstSleeper(today)
-  displayWorstSleeperToday.innerHTML = `<p> The worst user slept ${worstSleeper[0].hoursSlept} hours today.</p>`
+  const worstSleeper = userRepository.getWorstSleeper(today)
+  const bestSleeper = userRepository.getBestSleeper(today)
+  displayWorstSleeperToday.innerHTML = `<p> The worst user slept ${worstSleeper[0].hoursSlept} hours last night.</p> <p> The best user slept ${bestSleeper[0].hoursSlept} hours last night.</p>`
 }
 
 // created method to get worst sleeper is called below
@@ -117,7 +118,6 @@ function displayTotalSleepDataPerWeek(sleep) {
 }
 
 //Activity
-
 function createActivityData(user) {
   let activity = new Activity(activityData, user)
   displayActiveMinutesForToday(activity)
@@ -140,7 +140,6 @@ function displayActiveMinutesForToday(activity) {
   const newObj = userRepository.calculateActivityComparedToAllUsersForToday()
   displayUserActiveMinutesForToday.innerHTML = `<p>Your daily active minutes are ${activity.activeMinutesForToday(today)} , the total for all users today is ${newObj.minutesActive}. </p>`
 }
-
 //Our own metric
 function displayTotalMiles(activity) {
   displayUserMilesForToday.innerHTML = `<p>You have walked ${activity.calculateUserDailyMiles (today)} miles today, and a total of ${activity.calculateUserTotalMiles()} miles.</p>`
