@@ -4,7 +4,6 @@ class UserRepository {
     this.hydrationData = hydrationData
     this.sleepData = sleepData;
     this.activityData = activityData;
-    this.friendsNames = [];
   }
 
   getUserDataById(id) {
@@ -13,12 +12,10 @@ class UserRepository {
 
   findUserFriendsInformation(id) {
     const user = this.getUserDataById(id)
-    console.log('user', user)
-    const friendsNames = user.friends.reduce((acc, friend) => {
+    return user.friends.reduce((acc, friend) => {
      acc.push(userData.find(user => user.id === friend))
      return acc
     }, [])
-    return friendsNames
   }
   
   calculateFriendsNumStepsTotal(id) {
@@ -38,11 +35,9 @@ class UserRepository {
       })
     })
     return friendData.reduce((acc, entry) => {
-      if(!acc[entry.name]) {
-        acc[entry.name] = 0
-      }
+      !acc[entry.name] ? acc[entry.name] = 0 : null
       acc[entry.name] += entry.numSteps
-      return acc
+      return acc;
     }, {})
   }
 
@@ -54,7 +49,7 @@ class UserRepository {
   }
 
   calculateActivityComparedToAllUsersForToday() {
-    const totalDailyData = this.activityData.filter(entry => entry.date === '2019/09/22')
+    return this.activityData.filter(entry => entry.date === '2019/09/22')
     .reduce((acc, element) => {
       acc.numSteps += element.numSteps
       acc.minutesActive += element.minutesActive
@@ -67,7 +62,6 @@ class UserRepository {
       minutesActive : 0,
       flightsOfStairs : 0
     })
-    return totalDailyData
   }
   
   // Required rubric methods that aren't called
@@ -106,7 +100,6 @@ class UserRepository {
     return allUserAverages.filter(user => user.avgQual > 3);
   }
 }
-  
 
 if (typeof module !== 'undefined') {
   module.exports = UserRepository;
