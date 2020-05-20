@@ -79,7 +79,7 @@ function createHydrationData(user) {
 }
 
 function displayTotalUserFlOzConsumedEver(hydration) {
-  displayTotalUserFlOz.innerHTML = `<p> ${hydration.calculateTotalAverageDailyFlOz(user.id)} total fl oz & counting!</p>`
+  displayTotalUserFlOz.innerHTML = `<p> Your drink an average of ${hydration.calculateTotalAverageDailyFlOz(user.id)} fl oz per day.</p>`
 }
 
 function displayTotalUserFlOzPerWeek(hydration) {
