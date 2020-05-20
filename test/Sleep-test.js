@@ -105,9 +105,13 @@ describe('Sleep', function() {
     expect(sleep.returnCurrentUserSleepData()).to.deep.equal(user1Data)
   });
 
-  it.only('should be able to get the total average sleep hours', function() {
-    expect(sleep.calculateUserTotalAverageSleepHours()).to.deep.equal(6)
-  })
+  it('should be able to get the total average sleep hours', function() {
+    expect(sleep.calculateUserTotalAverageSleepHours()).to.equal(6)
+  });
+
+  it('should be able to get the total average sleep quality', function() {
+    expect(sleep.calculateUserTotalAverageSleepQuality()).to.equal(2)
+  });
 
   it('should be able to get the current users sleep data per week', function() {
     expect(sleep.calculateTotalSleepDataPerWeek('2019/09/22')).to.deep.equal([

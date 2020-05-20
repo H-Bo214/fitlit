@@ -37,10 +37,6 @@ class Sleep {
     return lastSevenDays
   }
 
-
-
-  // Methods that aren't actually called
-
 }
 
 if (typeof module !== 'undefined') {
