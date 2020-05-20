@@ -28,11 +28,6 @@ createRandomUser(),
 displayUserData(), 
 displayFirstName(), 
 displayTotalUserStepAverages();
-/// Delete the function below, use ;
-
-console.log('worstSleeper console log',userRepository.getWorstSleeper(today));
-
-
 
 // Functions:
 
@@ -110,14 +105,14 @@ function displayTotalUserAverageSleepHoursEver(sleep) {
   displayWorstSleeperToday.innerHTML = `<p> The worst user slept ${worstSleeper[0].hoursSlept} hours today.</p>`
 }
 
+// created method to get worst sleeper is called below
 function displayTotalSleepDataPerWeek(sleep) {
   const thisWeek = sleep.calculateTotalSleepDataPerWeek(today)
   const todaysData = thisWeek.splice(0, 1)
   displayUserSleepHoursToday.innerHTML = `<p>Today: ${todaysData[0].hoursSlept} hours</p>
   <p>Today: Sleep Quality ${todaysData[0].sleepQuality} hours</p>`
   thisWeek.forEach(day => {
-    displayUserSleepHoursPerWeek.innerHTML += `<p>You slept ${day.hoursSlept} hours on ${day.date} with a sleep quality of ${day.sleepQuality} hours</p>`
-    
+    displayUserSleepHoursPerWeek.innerHTML += `<p>You slept ${day.hoursSlept} hours on ${day.date} with a sleep quality of ${day.sleepQuality} hours</p>` 
   })
 }
 
@@ -128,8 +123,6 @@ function createActivityData(user) {
   displayActiveMinutesForToday(activity)
   displayTotalMiles(activity)
   displayWeeklyActivityData(activity)
-  // testing calculateUserDailyMiles (date), remove at the end and remove comma above
-  
 }
 
 function displayWeeklyActivityData(activity) {
@@ -139,7 +132,7 @@ function displayWeeklyActivityData(activity) {
   displayUserStepsToday.innerHTML = `<p>Today: ${todaysData[0].numSteps} steps</p> <p> All user steps today: ${newObj.numSteps}.</p> `
   displayUserFlightsOfStairs.innerHTML = `<p>Your daily Flights of Stairs are ${todaysData[0].flightsOfStairs}, the total for all users today is ${newObj.flightsOfStairs}</p>`
   thisWeek.forEach(day => {
-    displayUserActiveMinutesWeekly.innerHTML += `<p>On ${day.date} you were active ${day.minutesActive}, walked ${day.numSteps} steps & climbed ${day.flightsOfStairs} flights of stairs.</p>`
+    displayUserActiveMinutesWeekly.innerHTML += `<p>On ${day.date} you were active ${day.minutesActive} minutes, walked ${day.numSteps} steps & climbed ${day.flightsOfStairs} flights of stairs.</p>`
   })
 }
 
