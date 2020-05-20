@@ -4,7 +4,6 @@ class UserRepository {
     this.hydrationData = hydrationData
     this.sleepData = sleepData;
     this.activityData = activityData;
-    this.friendsNames = [];
   }
 
   getUserDataById(id) {
@@ -13,12 +12,10 @@ class UserRepository {
 
   findUserFriendsInformation(id) {
     const user = this.getUserDataById(id)
-    console.log('user', user)
-    const friendsNames = user.friends.reduce((acc, friend) => {
+    return user.friends.reduce((acc, friend) => {
      acc.push(userData.find(user => user.id === friend))
      return acc
     }, [])
-    return friendsNames
   }
   
   calculateFriendsNumStepsTotal(id) {
@@ -38,11 +35,9 @@ class UserRepository {
       })
     })
     return friendData.reduce((acc, entry) => {
-      if(!acc[entry.name]) {
-        acc[entry.name] = 0
-      }
+      !acc[entry.name] ? acc[entry.name] = 0 : null
       acc[entry.name] += entry.numSteps
-      return acc
+      return acc;
     }, {})
   }
 
@@ -54,12 +49,12 @@ class UserRepository {
   }
 
   calculateActivityComparedToAllUsersForToday() {
-    const totalDailyData = this.activityData.filter(entry => entry.date === '2019/09/22')
+    return this.activityData.filter(entry => entry.date === '2019/09/22')
     .reduce((acc, element) => {
       acc.numSteps += element.numSteps
       acc.minutesActive += element.minutesActive
       acc.flightsOfStairs += element.flightsOfStairs
-    return acc
+      return acc
     }, {
       userID : 1000,
       date : "2019/09/22",
@@ -67,7 +62,13 @@ class UserRepository {
       minutesActive : 0,
       flightsOfStairs : 0
     })
-    return totalDailyData
+  }
+
+  //Developed & created sleep metric to display
+  getWorstSleeper(date) {
+    const sortedList = this.sleepData.filter(entry => entry.date === date).sort((a, b) => a.hoursSlept - b.hoursSlept)
+    const bestSleep = sortedList[0]
+    return sortedList.filter(entry => entry.hoursSlept === bestSleep.hoursSlept)
   }
   
   // Required rubric methods that aren't called
@@ -105,26 +106,13 @@ class UserRepository {
     }, []);
     return allUserAverages.filter(user => user.avgQual > 3);
   }
-
-    //For a given day (identified by the date), find the users who slept the most number of hours (one or more if they tied)
-
-    // Rubric required, method not called.
-    getBestSleeper(date) {
-      const sortedList = this.sleepData.filter(entry => entry.date === date).sort((a, b) => b.hoursSlept - a.hoursSlept)
-      const bestSleep = sortedList[0]
-      return sortedList.filter(entry => entry.hoursSlept === bestSleep.hoursSlept)
-    }
-
-    //Own metric to display
-    getWorstSleeper(date) {
-      const sortedList = this.sleepData.filter(entry => entry.date === date).sort((a, b) => a.hoursSlept - b.hoursSlept)
-      const bestSleep = sortedList[0]
-      return sortedList.filter(entry => entry.hoursSlept === bestSleep.hoursSlept)
-    }
-    
-    
-}
   
+  getBestSleeper(date) {
+    const sortedList = this.sleepData.filter(entry => entry.date === date).sort((a, b) => b.hoursSlept - a.hoursSlept)
+    const bestSleep = sortedList[0]
+    return sortedList.filter(entry => entry.hoursSlept === bestSleep.hoursSlept)
+  } 
+}
 
 if (typeof module !== 'undefined') {
   module.exports = UserRepository;
